@@ -1,2 +1,2 @@
-# StoryWeave
-StoryShare is a dynamic creative writing platform that revolves around shared prompts and collaborative storytelling. Writers can not only share prompts to inspire fellow writers but also create and contribute to stories based on those prompts, fostering a vibrant community of engaged writers and readers.
+# StoryShare
+StoryShare is a collaborative writing platform that empowers creative writers to receive writing prompts and share their stories. It provides an immersive space for writers to enhance their writing skills, engage with a vibrant writing community, and foster a love for storytelling.

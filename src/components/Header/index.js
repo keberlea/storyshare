@@ -1,5 +1,17 @@
 import React, { useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+
+// create your styled component
+const StyledNavLink = styled(NavLink)`
+  margin-right: 15px;
+  margin-left: 15px;
+  transition: transform .2s;
+  box-shadow: 0px 4px 10px 3px rgba(0,0,0,0.75);
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
 
 const Header = ({ activeTab, setActiveTab }) => {
     const location = useLocation();
@@ -21,40 +33,40 @@ const Header = ({ activeTab, setActiveTab }) => {
                 StoryShare
             </div>
             <nav className="flex flex-wrap justify-around">
-                <NavLink
+                <StyledNavLink
                     to="/home"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/home' ? 'underline font-bold' : ''} hover:bg-hover-pink hover:text-white`}
+                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/home' ? 'underline font-bold' : ''} `}
                 >
                     Home
-                </NavLink>
+                </StyledNavLink>
 
-                <NavLink
+                <StyledNavLink
                     to="/signup"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/signup' ? 'underline font-bold' : ''} hover:bg-hover-pink hover:text-white`}
+                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/signup' ? 'underline font-bold' : ''} `}
                 >
                     Signup
-                </NavLink>
+                </StyledNavLink>
 
-                <NavLink
+                <StyledNavLink
                     to="/login"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/login' ? 'underline font-bold' : ''} hover:bg-hover-pink hover:text-white`}
+                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/login' ? 'underline font-bold' : ''} `}
                 >
                     Log in
-                </NavLink>
+                </StyledNavLink>
 
-                <NavLink
+                <StyledNavLink
                     to="/prompt"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/prompt' ? 'underline font-bold' : ''} hover:bg-hover-pink hover:text-white`}
+                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/prompt' ? 'underline font-bold' : ''} `}
                 >
                     Prompts
-                </NavLink>
+                </StyledNavLink>
 
-                <NavLink
+                <StyledNavLink
                     to="/stories"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/stories' ? 'underline font-bold' : ''} hover:bg-hover-pink hover:text-white`}
+                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/stories' ? 'underline font-bold' : ''} `}
                 >
                     Stories
-                </NavLink>
+                </StyledNavLink>
             </nav>
         </header>
     );

@@ -1,9 +1,0 @@
-.link {
-    margin-right: 15px;
-    margin-left: 15px;
-    transition: transform .2s;
-}
-
-.link:hover {
-    transform: scale(1.1);
-}

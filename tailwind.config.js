@@ -15,9 +15,9 @@ module.exports = {
       colors: {
         'header-blue': '#b8d1f6',
         'button-yellow': '#fee857',
+        'button-pink': '#f370be',
         'app-color': '#72a1ed',
         'foot-color': '#5e5d7c',
-        'hover-pink': '#5e5d7c'
       },
     },
   },

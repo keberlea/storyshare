@@ -7,6 +7,7 @@ import Profile from "./components/Profile";
 import Prompt from "./components/Prompt";
 import Signup from "./components/Signup";
 import Stories from "./components/Stories";
+import Story from './components/Story';
 import Footer from "./components/Footer";
 import { Helmet } from "react-helmet";
 

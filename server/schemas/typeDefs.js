@@ -33,9 +33,14 @@ const typeDefs = gql`
         login(username: String!, password: String!): Auth
         addStory(userId: ID!, content: String!): User
         addPrompt(userId: ID!, title: String!, description: String!): User
+        addComment(userId: ID!, content: String!, storyId: ID!): User
+        updateStory(userId: ID!, content: String!, storyId: ID! ): User
+        updatePrompt(userId: ID!, title: String!, description: String!, promptId: ID! ): User
+        updateComment(userId: ID!, content: String!, storyId: ID!, commentId: ID! ): User
         deleteUser(userId: ID!): User
         deleteStory(_id: ID!): Boolean
         deletePrompt(_id: ID!): Boolean
+        deleteComment(_id: ID!): Boolean
 
     }
 

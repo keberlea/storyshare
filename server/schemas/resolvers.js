@@ -1,20 +1,63 @@
 //used User for all of these but thinking some may need to be other models?
 
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Story, Comment } = require('../models');
+const { User, Story, Prompt, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     
     Query: {
+        //all users
         users: async () => {
             return User.find();
         },
-
+        //user by id
         user: async (parent, { userId }) => {
             return User.findOne({_id: userId});
-        }
         },
+
+        //stories by user User homepage
+        storiesByUser:async (_, args,{userId} )=> {
+            const user = await User.findById(userId)
+            return user.stories
+        },
+
+        //all prompts home page
+        prompts: async () => {
+            return Prompt.find();
+            },
+        
+        //prompt by id when selecting prompt
+        prompt: async (parent, { promptId }) => {
+            return Prompt.findOne({_id: promptId});
+        },
+
+        //all stories
+        stories: async () => {
+            return Story.find();
+        },
+
+        //story by id when selecting story
+        story: async (parent, { storyId }) => {
+            return Story.findOne({ _id: storyId });
+        },
+
+        //comment by storyid
+        commentsByStory: async (parent, { storyId }) => {
+            return Comment.find().where('post').equals(`${storyId}`).populate('_author');
+        },
+
+        //comment by id when selecting comment
+        comment: async (parent, { commentId }) => {
+            return Comment.findByIdAndUpdate(
+                { _id: commentId },
+                { $inc: { commentCount: 1 } },
+                { new: true }
+            );
+        },
+        
+
+    },
     
     Mutation:{
         
@@ -74,7 +117,7 @@ const resolvers = {
                 updatedUser = await User.findById(userId);
                 storiesArray = updatedUser.stories;
                 storiesArray.forEach((story)=>{
-                    if(story._id == storyId){
+                    if(story._id === storyId){
                         story.content = content;
                     }
                 })
@@ -91,10 +134,10 @@ const resolvers = {
             try{
                 let promptsArray=[];
                 let updatedUser;
-                updatedUser = await User.findById(userId);
+                updatedUser = await Prompt.findById(userId);
                 promptsArray = updatedUser.prompts;
                 promptsArray.forEach((prompt)=>{
-                    if(prompt._id == promptId){
+                    if(prompt._id === promptId){
                         prompt.title = title;
                         prompt.description = description;
                     }
@@ -115,7 +158,7 @@ const resolvers = {
                 updatedUser = await User.findById(userId);
                 commentsArray = updatedUser.comments;
                 commentsArray.forEach((comment)=>{
-                    if(comment._id == commentId){
+                    if(comment._id === commentId){
                         comment.content = content;
                     }
                 })
@@ -129,7 +172,7 @@ const resolvers = {
         },
 
         deleteUser: async (parent, { userId }) => {
-            const userToRemove= await User.findByIdAndDelete({_id:ObjectId(userId)});
+            const userToRemove= await User.findByIdAndDelete({_id: userId});
             return userToRemove;
         },
 

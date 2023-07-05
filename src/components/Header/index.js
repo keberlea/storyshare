@@ -35,35 +35,35 @@ const Header = ({ activeTab, setActiveTab }) => {
             <nav className="flex flex-wrap justify-around">
                 <StyledNavLink
                     to="/home"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/home' ? 'underline font-bold' : ''} `}
+                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/home' ? 'underline' : ''} `}
                 >
                     Home
                 </StyledNavLink>
 
                 <StyledNavLink
                     to="/signup"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/signup' ? 'underline font-bold' : ''} `}
+                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/signup' ? 'underline' : ''} `}
                 >
                     Signup
                 </StyledNavLink>
 
                 <StyledNavLink
                     to="/login"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/login' ? 'underline font-bold' : ''} `}
+                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/login' ? 'underline' : ''} `}
                 >
                     Log in
                 </StyledNavLink>
 
                 <StyledNavLink
                     to="/prompt"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/prompt' ? 'underline font-bold' : ''} `}
+                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/prompt' ? 'underline' : ''} `}
                 >
                     Prompts
                 </StyledNavLink>
 
                 <StyledNavLink
                     to="/stories"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/stories' ? 'underline font-bold' : ''} `}
+                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/stories' ? 'underline' : ''} `}
                 >
                     Stories
                 </StyledNavLink>

@@ -15,10 +15,11 @@ const Header = ({ activeTab, setActiveTab }) => {
 
     return (
         <header
-            className="px-6 py-4 bg-header-blue text-black text-4xl"
+            className="px-6 py-4 bg-header-blue flex flex-col items-center justify-center"
         >
-
-            <nav className="flex flex-wrap justify-around">
+            <h1 className="text-5xl text-white font-Licorice mb-6" id="title">StoryShare</h1>
+            
+            <nav className="text-black text-4xl flex flex-wrap justify-around">
                 <NavLink
                     to="/home"
                     className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/home' ? 'underline font-bold' : ''} hover:bg-blue-500 hover:text-white`}

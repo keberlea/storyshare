@@ -1,6 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Licorice&display=swap');
+
+
 .App {
   text-align: center;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 .App-header {
   background-color: #282c34;
@@ -11,6 +22,15 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+#title {
+  font-family: 'Licorice', cursive;
+  font-size: calc(100px + 2vmin);
+  color: #ffffff;
+  margin-bottom: 1rem;
+  -webkit-text-stroke: 2px black;
+  text-shadow: 0 0 5px black;
 }
 
 .App-link {

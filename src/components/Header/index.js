@@ -4,9 +4,14 @@ import styled from 'styled-components';
 import LoginModal from '../Login';
 
 // create your styled component
+// create your styled component
 const StyledButton = styled.button`
-  margin-right: 15px;
-  margin-left: 15px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
   transition: transform .2s;
   box-shadow: 0px 4px 10px 3px rgba(0,0,0,0.75);
   &:hover {
@@ -72,7 +77,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                 {!isLoggedIn && (
                     <StyledButton
                         onClick={() => setShowLogin(true)}
-                        className="px-4 py-2 m-2 bg-button-yellow text-black font-marvel"
+                        className="px-4 py-2 m-2 bg-button-pink font-marvel"
                     >
                         Log in
                     </StyledButton>

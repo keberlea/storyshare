@@ -27,6 +27,7 @@ const Header = ({ activeTab, setActiveTab }) => {
 
     return (
         <header
+<<<<<<< HEAD
             className="px-1 py-4 bg-header-blue text-black text-4xl"
         >
             <div className="flex justify-center text-8xl mb-6 font-licorice text-inside text-black-stroke">
@@ -34,6 +35,14 @@ const Header = ({ activeTab, setActiveTab }) => {
             </div>
             <nav className="flex flex-wrap justify-around">
                 <StyledNavLink
+=======
+            className="px-6 py-4 bg-header-blue flex flex-col items-center justify-center"
+        >
+            <h1 className="text-5xl text-white font-Licorice mb-6" id="title">StoryShare</h1>
+            
+            <nav className="text-black text-4xl flex flex-wrap justify-around">
+                <NavLink
+>>>>>>> aa27c20256cd781b1e8cc414bc3f9e89e16183c6
                     to="/home"
                     className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/home' ? 'underline' : ''} `}
                 >

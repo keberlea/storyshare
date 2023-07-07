@@ -25,6 +25,13 @@ const typeDefs = gql`
     title: String
     description: String
   }
+  
+  type Comment {
+    _id: ID!
+    commentText: String!
+    commentAuthor: String!
+    createdAt: String!
+  }
 
   type Auth {
     token: ID!
@@ -34,23 +41,28 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(userId: ID!): User
+    storiesByUser(userId: ID!): [Story]
+    prompts: [Prompt]
+    prompt(promptId: ID!): Prompt
+    stories: [Story]
+    story(storyId: ID!): Story
+    commentsByStory(storyId: ID!): [Comment]
+    comment(commentId: ID!): Comment
   }
-
+  
   type Mutation {
     createUser(username: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    addStory(userId: ID!, content: String!): User
-    addPrompt(userId: ID!, title: String!, description: String!): User
-    addComment(userId: ID!, content: String!, storyId: ID!): User
-    updateStory(userId: ID!, content: String!, storyId: ID! ): User
-    updatePrompt(userId: ID!, title: String!, description: String!, promptId: ID! ): User
-    updateComment(userId: ID!, content: String!, storyId: ID!, commentId: ID! ): User
+    createStory(userId: ID!, content: String!): User
+    createPrompt(userId: ID!, title: String!, description: String!): User
+    createComment(userId: ID!, content: String!, storyId: ID!): User
+    updateStory(userId: ID!, storyId: ID!, content: String!): User
+    updatePrompt(userId: ID!, promptId: ID!, title: String!, description: String!): User
+    updateComment(userId: ID!, commentId: ID!, content: String!): User
     deleteUser(userId: ID!): User
-    deleteStory(_id: ID!): Boolean
-    deletePrompt(_id: ID!): Boolean
-    deleteComment(_id: ID!): Boolean
+    deleteStory(userId: ID!, storyId: ID!): User
+    deletePrompt(userId: ID!, promptId: ID!): User
   }
-
 `;
 
 module.exports = typeDefs;

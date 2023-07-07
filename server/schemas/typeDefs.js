@@ -1,10 +1,10 @@
 const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
-    _id: ID!
+    id: ID!
     username: String!
-    firstName: String!
-    lastName: String!
+    firstName: String
+    lastName: String
     password: String!
     stories: [Story!]!
     prompts: [Prompt!]!
@@ -21,15 +21,16 @@ const typeDefs = gql`
   }
 
   type Prompt {
-    _id: ID
+    id: ID
     title: String
+    author: User
     description: String
   }
   
   type Comment {
     _id: ID!
     commentText: String!
-    commentAuthor: String!
+    commentAuthor: User!
     createdAt: String!
   }
 
@@ -53,15 +54,16 @@ const typeDefs = gql`
   type Mutation {
     createUser(username: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    createStory(userId: ID!, content: String!): User
-    createPrompt(userId: ID!, title: String!, description: String!): User
-    createComment(userId: ID!, content: String!, storyId: ID!): User
-    updateStory(userId: ID!, storyId: ID!, content: String!): User
-    updatePrompt(userId: ID!, promptId: ID!, title: String!, description: String!): User
-    updateComment(userId: ID!, commentId: ID!, content: String!): User
+    createStory(userId: ID!, content: String!): Story
+    createPrompt(userId: ID!, title: String!, description: String!): Prompt
+    createComment(userId: ID!, content: String!, storyId: ID!): Comment
+    updateStory(userId: ID!, storyId: ID!, content: String!): Story
+    updatePrompt(userId: ID!, promptId: ID!, title: String!, description: String!): Prompt
+    updateComment(userId: ID!, commentId: ID!, content: String!): Comment
     deleteUser(userId: ID!): User
-    deleteStory(userId: ID!, storyId: ID!): User
-    deletePrompt(userId: ID!, promptId: ID!): User
+    deleteStory(userId: ID!, storyId: ID!): Story
+    deletePrompt(userId: ID!, promptId: ID!): Prompt
+    deleteComment(userId: ID!, commentId:ID!): Comment
   }
 `;
 

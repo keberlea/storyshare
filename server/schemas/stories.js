@@ -6,6 +6,8 @@ const typeDefs = gql`
     title: String!
     content: String!
     author: User!
+    createdAt: String!
+    updatedAt: String!
     comments: [Comment!]!
   }
   

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import LoginModal from '../Login';
+import LoginModal from '../LoginModal';
 
 // create your styled component
 // create your styled component

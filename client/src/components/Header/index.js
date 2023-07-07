@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import LoginModal from '../LoginModal';
+import SignupModal from '../SignupModal'
 
-// create your styled component
-// create your styled component
 const StyledButton = styled.button`
   position: absolute;
   top: 20px;
@@ -31,14 +30,33 @@ const StyledNavLink = styled(NavLink)`
 
 const Header = ({ activeTab, setActiveTab }) => {
     const [showLogin, setShowLogin] = useState(false);
+    const [showSignup, setShowSignup] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const location = useLocation();
 
-    // Assume we have a function that can check login status
     const checkLoginStatus = async () => {
-        // Replace this with your actual function that checks the login status from the server
-        const loggedIn = Math.random() > 0.5; // This will randomly return true or false for now
+        const loggedIn = Math.random() > 0.5; // this is just a placeholder
         setIsLoggedIn(loggedIn);
+    };
+
+    const handleNavigateToLogin = () => {
+        setShowLogin(true);
+        setShowSignup(false);
+    };
+
+    const handleNavigateToSignup = () => {
+        setShowSignup(true);
+        setShowLogin(false);
+    };
+
+    const onLoginSuccess = () => {
+        setIsLoggedIn(true);
+        setShowLogin(false);
+    };
+
+    const onSignUpSuccess = () => {
+        setIsLoggedIn(true);
+        setShowSignup(false);
     };
 
     useEffect(() => {
@@ -52,13 +70,10 @@ const Header = ({ activeTab, setActiveTab }) => {
     }, [location, setActiveTab]);
 
     return (
-        <header
-            className="px-6 py-4 bg-header-blue flex flex-col items-center justify-center"
-        >
+        <header className="px-6 py-4 bg-header-blue flex flex-col items-center justify-center">
             <h1 className="text-5xl text-white font-Licorice mb-6" id="title">
                 StoryShare
             </h1>
-
             <nav className="text-black text-4xl flex flex-wrap justify-around">
                 <StyledNavLink
                     to="/home"
@@ -66,32 +81,28 @@ const Header = ({ activeTab, setActiveTab }) => {
                 >
                     Home
                 </StyledNavLink>
-
-                <StyledNavLink
-                    to="/signup"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/signup' ? 'underline' : ''} `}
-                >
-                    Signup
-                </StyledNavLink>
-
                 {!isLoggedIn && (
-                    <StyledButton
-                        onClick={() => setShowLogin(true)}
-                        className="px-4 py-2 m-2 bg-button-pink font-marvel"
-                    >
-                        Log in
-                    </StyledButton>
+                    <>
+                        <StyledButton
+                            onClick={handleNavigateToLogin}
+                            className="px-4 py-2 m-2 bg-button-pink font-marvel"
+                        >
+                            Log in
+                        </StyledButton>
+                        <StyledButton
+                            onClick={handleNavigateToSignup}
+                            className="px-4 py-2 m-2 bg-button-pink font-marvel"
+                        >
+                            Sign up
+                        </StyledButton>
+                    </>
                 )}
-
-                {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
-
                 <StyledNavLink
                     to="/prompt"
                     className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/prompt' ? 'underline' : ''} `}
                 >
                     Prompts
                 </StyledNavLink>
-
                 <StyledNavLink
                     to="/stories"
                     className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/stories' ? 'underline' : ''} `}
@@ -99,8 +110,23 @@ const Header = ({ activeTab, setActiveTab }) => {
                     Stories
                 </StyledNavLink>
             </nav>
+            {showLogin && (
+                <LoginModal
+                    onClose={() => setShowLogin(false)}
+                    onLoginSuccess={onLoginSuccess}
+                    onNavigateToSignup={handleNavigateToSignup}
+                />
+            )}
+            {showSignup && (
+                <SignupModal
+                    onClose={() => setShowSignup(false)}
+                    onSignUpSuccess={onSignUpSuccess}
+                    onNavigateToLogin={handleNavigateToLogin}
+                />
+            )}
         </header>
     );
+
 }
 
 export default Header;

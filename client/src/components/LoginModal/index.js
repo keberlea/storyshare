@@ -11,9 +11,10 @@ background-color: rgba(0, 0, 0, 0.8);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 `;
 
-const LoginModal = ({ onClose, onLoginSuccess }) => {
+const LoginModal = ({ onClose, onLoginSuccess, onNavigateToSignup }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
 
     const springProps = useSpring({
         opacity: 1,
@@ -44,7 +45,7 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
                     <button type="submit" className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-button-pink text-xl font-medium text-inside hover:bg-button-yellow hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-button-yellow sm:text-lg">Login</button>
                 </form>
                 {/* Close the modal when the link is clicked */}
-                <p className="mt-4 text-lg">Don't have an account? <Link to="/signup" className="text-app-color hover:underline" onClick={onClose}>Sign up for StoryShare</Link></p>
+                <p className="mt-4 text-lg">Don't have an account? <Link to="/signup" className="text-app-color hover:underline" onClick={onNavigateToSignup}>Sign up for StoryShare</Link></p>
                 <button type="button" className="mt-5 inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-app-color text-xl font-medium text-inside hover:bg-button-yellow hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-button-yellow sm:text-lg" onClick={onClose}>Close</button>
             </AnimatedModal>
         </div>

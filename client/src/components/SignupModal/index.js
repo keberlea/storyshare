@@ -11,7 +11,7 @@ background-color: rgba(0, 0, 0, 0.8);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 `;
 
-const SignUpModal = ({ onClose, onSignUpSuccess }) => {
+const SignUpModal = ({ onClose, onSignUpSuccess, onNavigateToLogin }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -43,7 +43,8 @@ const SignUpModal = ({ onClose, onSignUpSuccess }) => {
                     <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-3 py-2 placeholder-gray-500 text-black text-xl border rounded-md focus:outline-none focus:ring-2 focus:ring-button-pink mb-4" required />
                     <button type="submit" className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-button-pink text-xl font-medium text-inside hover:bg-button-yellow hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-button-yellow sm:text-lg">Sign Up</button>
                 </form>
-                <p className="mt-4 text-lg">Already have an account? <Link to="/login" className="text-app-color hover:underline" onClick={onClose}>Log in to StoryShare</Link></p>
+                {/* Close the modal when the link is clicked */}
+                <p className="mt-4 text-lg">Already have an account? <Link to="/login" className="text-app-color hover:underline" onClick={onNavigateToLogin}>Log in to StoryShare</Link></p>
                 <button type="button" className="mt-5 inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-app-color text-xl font-medium text-inside hover:bg-button-yellow hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-button-yellow sm:text-lg" onClick={onClose}>Close</button>
             </AnimatedModal>
         </div>

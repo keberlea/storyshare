@@ -152,6 +152,9 @@ Comment on a story <br>
 
 ## Contributing 
 ---
+Contributions are welcome and encouraged for this project. If you find any issues or have any suggestions for new features, please open an issue or submit a pull request. Before submitting a pull request, please ensure that your code adheres to the project's goals and has appropriate test coverage. Thank you for your interest in contributing to this project!
+
+This project was completed by Corey Vasser, Alicia Keberle, Carolina Ramirez Islas, and Chris Sarnacki under the instruction of the University of Oregon Full Stack Development Bootcamp. We appreciate your interest in contributing, and please don't hesitate to reach out if you have any questions. We value your input and look forward to collaborating with you!
 
 <br>
 

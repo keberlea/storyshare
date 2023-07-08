@@ -4,8 +4,8 @@
 ---
 * [License](#license)
 * [Installation](#installation)
-* [Packages](#packages)
 * [Description](#description)
+* [Technologies](#technologies)
 * [Usage](#usage)
 * [Contributing](#contributing)
 * [Tests](#tests)
@@ -23,17 +23,28 @@ This project is licensed under the MIT license.
 
 ## Installation
 ---
-To install this project: 
-1. Start by forking this repository on Github. 
-2. Clone this project to your machine by using the "git clone + URL" command. 
-3. Open the project with your favorite text editor, like VS Code (in your terminal, first type "cd foldername" then "code ."). 
-4. Install dependencies
+To install the Story Share app: 
+
+1. Clone the repository of the Story Share app to your local machine using the following command:
+
+    `git clone https://github.com/your-username/storyshare.git`
+
+2. Navigate to the project directory:
+
+    `cd storyshare`
+
+3. Open the project in your preferred text editor. For example, if you're using VS Code, run:
+
+    `code .`
+
+4. Install the required dependencies by running the following command:
+
+    `npm install`
+
+    This will download and install all the necessary packages and libraries.
 
 <br>
 
-## Packages
-
-<br>
 
 ## Description
 ---
@@ -41,9 +52,9 @@ StoryShare is a collaborative writing platform that empowers creative writers to
 
 <br>
 
-### Technologies Leveraged
+## Technologies
 
-The application utilizes the following technologies and frameworks so that the application can deliver a seamless experience:
+The application leverages the following technologies and frameworks so that the application can deliver a seamless experience:
 
 #### General Technologies:
 - ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black): 
@@ -74,44 +85,39 @@ A library for integrating GraphQL with Express.js. GraphQL is a modern query lan
 
 - ![web-vitals](https://img.shields.io/badge/web--vitals-00C7B7?style=for-the-badge&logo=npm&logoColor=white): A library for tracking and measuring web performance metrics.
 
+<br>
 
 ## Usage 
 ---
 To use the Story Share app, follow these steps:
 
-1. Make sure you have Node.js installed on your system. If not, you can download and install it from the official Node.js website (https://nodejs.org).
-
-2. Clone the repository of the Writing App to your local machine using the following command:
-
-    `git clone https://github.com/your-username/writing-app.git`
-
-3. Navigate to the project directory:
-
-    `cd storyshare`
-
-4. Install the required dependencies by running the following command:
+1. Install the necessary dependencies by running the following command in the project root folder:
 
     `npm install`
 
-    This will download and install all the necessary packages and libraries.
-
-5. Build the client-side code by running the following command:
+2. Build the client-side code by running the following command:
 
     `npm run build`
 
     This will compile and bundle the client-side code.
 
-6. Start the development server and the client application by running the following command:
+3. Start the development server and the client application by running the following command:
 
     `npm run develop`
 
     This will start the server and the client application concurrently.
 
-7. Open your web browser and visit http://localhost:3000 to access the Writing App.
-8. Create an account with a unique username and password to log in and access the features of the   app.
-9. Browse through the available prompts and start writing your stories based on them. Interact with other users' stories, leave comments, and provide feedback.
+4. Once the installation is complete, you can start the project by running:
 
-You can now use the Story Share to overcome writer's block, explore inspiring prompts, create some prompts yourself, and engage with other writers. Happy reading and writing!
+    `npm start`
+
+5. Open your web browser and visit http://localhost:3000 to access the Story Share App.
+
+6. Create an account with a unique username and password to log in and access the features of the   app.
+
+7. Browse through the available prompts and start writing your stories based on them. Interact with other users' stories, leave comments, and provide feedback.
+
+You can now use Story Share to overcome writer's block, explore inspiring prompts, create some prompts yourself, and engage with other writers. Happy reading and writing!
 
 
     To access the Heroku link:

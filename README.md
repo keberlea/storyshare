@@ -36,6 +36,8 @@ To install this project:
 ---
 Story Share is an innovative application designed to alleviate writer's block and inspire creativity among writers. It provides a platform where users can overcome the stress of coming up with story ideas by presenting them with engaging prompts that serve as a catalyst for their imagination. By fostering a community of like-minded individuals, Story Share encourages users to participate, share their stories, and engage in meaningful interactions with other writers.
 
+<br>
+
 ### Technologies Leveraged
 The application utilizes the following technologies and frameworks so that the application can deliver a seamless experience:
 
@@ -54,12 +56,60 @@ Mongoose: A MongoDB object modeling tool for Node.js, it simplifies interaction 
 Tailwind CSS: A customizable CSS framework that promotes a utility-first approach to styling, Tailwind CSS offers a comprehensive set of pre-built components and responsive design utilities, enabling rapid UI development.
 
 
-
 ## Usage 
 ---
+To use the Story Share app, follow these steps:
+
+1. Make sure you have Node.js installed on your system. If not, you can download and install it from the official Node.js website (https://nodejs.org).
+
+2. Clone the repository of the Writing App to your local machine using the following command:
+
+    `git clone https://github.com/your-username/writing-app.git`
+
+3. Navigate to the project directory:
+
+    `cd storyshare`
+
+4. Install the required dependencies by running the following command:
+
+    `npm install`
+
+    This will download and install all the necessary packages and libraries.
+
+5. Build the client-side code by running the following command:
+
+    `npm run build`
+
+    This will compile and bundle the client-side code.
+
+6. Start the development server and the client application by running the following command:
+
+    `npm run develop`
+
+    This will start the server and the client application concurrently.
+
+7. Open your web browser and visit http://localhost:3000 to access the Writing App.
+8. Create an account with a unique username and password to log in and access the features of the   app.
+9. Browse through the available prompts and start writing your stories based on them. Interact with other users' stories, leave comments, and provide feedback.
+
+You can now use the Story Share to overcome writer's block, explore inspiring prompts, create some prompts yourself, and engage with other writers. Happy reading and writing!
+
+
+    To access the Heroku link:
+
+
+    To access the Github Repository visit:
+    https://github.com/CarolinaRaIs/storyshare
+
+    To access the deployed site visit:
+    https://carolinarais.github.io/storyshare/ 
+
+<br>
 
 ### **Screenshots**
 
+User Interface of Story Share App:
+![plot](./assets/.png)
 
 <br>
 

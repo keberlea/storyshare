@@ -108,8 +108,45 @@ You can now use the Story Share to overcome writer's block, explore inspiring pr
 
 ### **Screenshots**
 
-User Interface of Story Share App:
-![plot](./assets/.png)
+--- 
+Home <br>
+![Home Screenshot](/assests/homescreenshot.PNG)
+<br>
+Login <br>
+
+![Login Screenshot](/assests/LoginScreenshot.PNG)
+<br>
+Signup <br>
+
+![SignUp Screenshot](/assests/signupScreenshot.PNG)
+<br>
+Dashboard <br>
+
+![user dashboard](/assests/userDashboardScreenshot.PNG)
+
+<br>
+Create a new story <br>
+
+![create a new post](/assests/createStoryScreenshot.PNG)
+<br>
+Update/Delete a story <br>
+
+![Update/delete post](/assests/singleStoryvandUpdateandDelete.PNG)
+
+<br>
+Create a new prompt <br>
+
+![create a new post](/assests/createPromptScreenshot.PNG)
+
+<br>
+Update/Delete a prompt <br>
+
+![Update/delete post](/assests/singlePromptvandUpdateandDelete.PNG)
+
+<br>
+Comment on a story <br>
+
+![Comment on a post](public/assests/SingleStoryComment.PNG)
 
 <br>
 

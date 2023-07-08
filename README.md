@@ -16,6 +16,10 @@ StoryShare is a collaborative writing platform that empowers creative writers to
 
 ## License 
 
+[MIT License](./LICENSE) <br>
+
+This project is licensed under the MIT license.
+
 <br>
 
 ## Installation

@@ -23,7 +23,7 @@ This project is licensed under the MIT license.
 
 ## Installation
 ---
-To install the Story Share app: 
+To install the StoryShare app: 
 
 1. Clone the repository of the Story Share app to your local machine using the following command:
 
@@ -89,7 +89,7 @@ A library for integrating GraphQL with Express.js. GraphQL is a modern query lan
 
 ## Usage 
 ---
-To use the Story Share app, follow these steps:
+To use the StoryShare app, follow these steps:
 
 1. Install the necessary dependencies by running the following command in the project root folder:
 
@@ -134,45 +134,58 @@ You can now use Story Share to overcome writer's block, explore inspiring prompt
 ### **Screenshots**
 
 --- 
-Home <br>
+#### _ _**Home**_ _
+<br>
+
 ![Home Screenshot](/assests/homescreenshot.PNG)
 <br>
-Login <br>
 
-![Login Screenshot](/assests/LoginScreenshot.PNG)
+#### _ _**Login**_ _
 <br>
-Signup <br>
 
-![SignUp Screenshot](/assests/signupScreenshot.PNG)
+![Login Screenshot](/assets/LoginScreenshot.png)
 <br>
-Dashboard <br>
+
+#### _ _**Signup**_ _
+<br>
+
+![SignUp Screenshot](/assets/signupScreenshot.png)
+<br>
+
+#### _ _**Dashboard**_ _ 
+<br>
 
 ![user dashboard](/assests/userDashboardScreenshot.PNG)
-
 <br>
-Create a new story <br>
+
+#### _ _**Create a new story**_ _ 
+<br>
 
 ![create a new post](/assests/createStoryScreenshot.PNG)
 <br>
-Update/Delete a story <br>
+
+#### _ _**Update/Delete a story**_ _ 
+<br>
 
 ![Update/delete post](/assests/singleStoryvandUpdateandDelete.PNG)
-
 <br>
-Create a new prompt <br>
+
+#### _ _**Create a new prompt**_ _ 
+<br>
 
 ![create a new post](/assests/createPromptScreenshot.PNG)
-
 <br>
-Update/Delete a prompt <br>
+
+#### _ _**Update/Delete a prompt**_ _ 
+<br>
 
 ![Update/delete post](/assests/singlePromptvandUpdateandDelete.PNG)
-
 <br>
-Comment on a story <br>
+
+#### _ _**Comment on a story**_ _ 
+<br>
 
 ![Comment on a post](public/assests/SingleStoryComment.PNG)
-
 <br>
 
 ## Contributing 

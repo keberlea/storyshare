@@ -143,7 +143,7 @@ You can now use Story Share to overcome writer's block, explore inspiring prompt
 #### _ _**Login**_ _
 <br>
 
-![Login Screenshot](/assests/LoginScreenshot.png)
+![Login Screenshot](/assets/LoginScreenshot.png)
 <br>
 
 #### _ _**Signup**_ _

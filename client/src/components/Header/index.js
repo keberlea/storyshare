@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import LoginModal from '../LoginModal';
 import SignupModal from '../SignupModal'
-import AuthService from '../../utils/auth'
+import Auth from '../../utils/auth'
 
 const StyledButton = styled.button`
   position: absolute;
@@ -36,7 +36,7 @@ const Header = ({ activeTab, setActiveTab }) => {
     const location = useLocation();
 
     const checkLoginStatus = () => {
-        const loggedIn = AuthService.loggedIn();
+        const loggedIn = Auth.loggedIn();
         setIsLoggedIn(loggedIn);
     };
 

@@ -3,28 +3,28 @@ const jwt = require('jsonwebtoken');
 const secret = 'supersecret';
 const expiration = '2h';
 
-module.exports ={
-    authMiddleware: function({req}){
+module.exports = {
+    authMiddleware: function ({ req }) {
         let token = req.body.token || req.query.token || req.headers.authorization;
-        
-        if(req.headers.authorization){
+
+        if (req.headers.authorization) {
             token = token.split(' ').pop().trim();
         }
 
-        if(!token){
+        if (!token) {
             return req;
         }
 
-        try{
-            const {data} = jwt.verify(token, secret, {maxAge: expiration});
+        try {
+            const { data } = jwt.verify(token, secret, { maxAge: expiration });
             req.user = data;
-        }catch{
+        } catch {
             console.log('Invalid token');
         }
         return req;
     },
-    signToken: function({ _id, username }){
+    signToken: function ({ _id, username }) {
         const payload = { _id, username };
-        return jwt.sign({data: payload}, secret, {expiresIn: expiration});
+        return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },
 };

@@ -23,6 +23,16 @@ export const QUERY_USER = gql`
     }
 `;
 
+//query prompts
+export const QUERY_PROMPTS = gql`
+    query prompts {
+        prompts {
+            _id
+            promptText
+        }
+    }
+`;
+
 export const QUERY_STORY = gql`
     query story($id: ID!) {
         story(_id: $id) {

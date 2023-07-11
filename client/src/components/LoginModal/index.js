@@ -15,9 +15,8 @@ background-color: rgba(0, 0, 0, 0.8);
 `;
 
 const LoginModal = ({ onClose, onLoginSuccess, onNavigateToSignup }) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-
+    const [formState, setFormState] = useState({ username: '', password: '' });
+    const [login, { error, }] = useMutation(LOGIN_USER);
 
     const springProps = useSpring({
         opacity: 1,
@@ -26,13 +25,34 @@ const LoginModal = ({ onClose, onLoginSuccess, onNavigateToSignup }) => {
         config: { tension: 0, friction: 0, }
     });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        // call API to login the user
-        // await login({ username, password });
+    const handleChange = (event) => {
+        const { name, value } = event.target;
 
-        // If login is successful, handle it in the parent component
-        onLoginSuccess({ username });
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        console.log(formState);
+        try {
+            const { data } = await login({
+                variables: { ...formState },
+            });
+
+            Auth.login(data.login.token);
+            onLoginSuccess(); // Call the success callback
+        } catch (e) {
+            console.error(e);
+        }
+
+        // clear form values
+        setFormState({
+            username: '',
+            password: '',
+        });
     };
 
     return (
@@ -43,11 +63,15 @@ const LoginModal = ({ onClose, onLoginSuccess, onNavigateToSignup }) => {
                     Login
                 </h3>
                 <form onSubmit={handleSubmit} className="mt-4">
-                    <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} className="w-full px-3 py-2 placeholder-gray-500 text-black text-xl border rounded-md focus:outline-none focus:ring-2 focus:ring-button-pink mb-2" required />
-                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-3 py-2 placeholder-gray-500 text-black text-xl border rounded-md focus:outline-none focus:ring-2 focus:ring-button-pink mb-4" required />
+                    <input type="text" name="username" placeholder="Username" value={formState.username} onChange={handleChange} className="w-full px-3 py-2 placeholder-gray-500 text-black text-xl border rounded-md focus:outline-none focus:ring-2 focus:ring-button-pink mb-2" required />
+                    <input type="password" name="password" placeholder="Password" value={formState.password} onChange={handleChange} className="w-full px-3 py-2 placeholder-gray-500 text-black text-xl border rounded-md focus:outline-none focus:ring-2 focus:ring-button-pink mb-4" required />
                     <button type="submit" className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-button-pink text-xl font-medium text-inside hover:bg-button-yellow hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-button-yellow sm:text-lg">Login</button>
                 </form>
-                {/* Close the modal when the link is clicked */}
+                {error && (
+                    <div className="my-3 p-3 bg-danger text-white">
+                        {error.message}
+                    </div>
+                )}
                 <p className="mt-4 text-lg">Don't have an account? <Link to="/signup" className="text-app-color hover:underline" onClick={onNavigateToSignup}>Sign up for StoryShare</Link></p>
                 <button type="button" className="mt-5 inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-app-color text-xl font-medium text-inside hover:bg-button-yellow hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-button-yellow sm:text-lg" onClick={onClose}>Close</button>
             </AnimatedModal>

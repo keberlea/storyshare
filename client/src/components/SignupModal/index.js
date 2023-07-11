@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../../utils/mutations';
+import { CREATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
@@ -20,7 +20,7 @@ const SignUpModal = ({ onClose, onSignUpSuccess, onNavigateToLogin }) => {
         password: '',
     });
 
-    const [addUser, { error, }] = useMutation(ADD_USER);
+    const [createUser, { error, }] = useMutation(CREATE_USER);
 
     const springProps = useSpring({
         opacity: 1,
@@ -43,11 +43,11 @@ const SignUpModal = ({ onClose, onSignUpSuccess, onNavigateToLogin }) => {
         console.log(formState);
 
         try {
-            const { data } = await addUser({
+            const { data } = await createUser({
                 variables: { ...formState },
             });
 
-            Auth.login(data.addUser.token);
+            Auth.login(data.createUser.token);
             onSignUpSuccess();  // Call the success callback
         } catch (e) {
             console.error(e);

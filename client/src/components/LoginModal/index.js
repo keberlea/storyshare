@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 const AnimatedModal = styled(animated.div)`
 background-color: rgba(0, 0, 0, 0.8);

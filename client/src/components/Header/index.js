@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import LoginModal from '../LoginModal';
 import SignupModal from '../SignupModal'
+import AuthService from '../../utils/auth'
 
 const StyledButton = styled.button`
   position: absolute;
@@ -34,8 +35,8 @@ const Header = ({ activeTab, setActiveTab }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const location = useLocation();
 
-    const checkLoginStatus = async () => {
-        const loggedIn = Math.random() > 0.5; // this is just a placeholder
+    const checkLoginStatus = () => {
+        const loggedIn = AuthService.loggedIn();
         setIsLoggedIn(loggedIn);
     };
 

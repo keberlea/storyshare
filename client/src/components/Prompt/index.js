@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_PROMPTS} from '../../utils/queries';
-import { ADD_STORY } from '../../utils/mutations';
+import { CREATE_STORY } from '../../utils/mutations';
 
 
 
@@ -14,14 +14,14 @@ const Prompt = () => {
     setSelectedPromptId(promptId);
   };
 
-  const [addStory] = useMutation(ADD_STORY);
+  const [createStory] = useMutation(CREATE_STORY);
 
   const handleStorySubmit = (e) => {
     e.preventDefault();
     // Get the story value from the form input field
     const story = e.target.elements.story.value;
     // Call the mutation to add the story to the database
-    addStory({
+    createStory({
       variables: { promptId: selectedPromptId, story },
     })
       .then(() => {

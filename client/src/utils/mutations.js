@@ -10,7 +10,7 @@ export const LOGIN_USER = gql`
       }
     }
   }
-`;export const ADD_USER = gql`
+`;export const CREATE_USER = gql`
 mutation addUser($username: String!, $password: String!) {
   addUser(username: $username, password: $password) {
     token
@@ -22,7 +22,7 @@ mutation addUser($username: String!, $password: String!) {
 }
 `;
 
-export const ADD_STORY = gql`
+export const CREATE_STORY = gql`
 mutation addStory($title: String!, $prompt: String!, $storyText: String!) {
     addStory(title: $title, prompt: $prompt, storyText: $storyText) {
         _id
@@ -41,7 +41,7 @@ mutation addStory($title: String!, $prompt: String!, $storyText: String!) {
 }
 `;
 
-export const ADD_COMMENT = gql`
+export const CREATE_COMMENT = gql`
 mutation addComment($storyId: ID!, $commentText: String!) {
     addComment(storyId: $storyId, commentText: $commentText) {
         _id

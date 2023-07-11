@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 
@@ -22,13 +25,18 @@ const SignUpModal = ({ onClose, onSignUpSuccess, onNavigateToLogin }) => {
         config: { tension: 0, friction: 0, }
     });
 
+    const [signUp, { error, data }] = useMutation(ADD_USER);
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // call API to register the user
-        // await signUp({ username, password });
-
-        // If signup is successful, handle it in the parent component
-        onSignUpSuccess({ username });
+        try {
+            const { data } = await signUp({
+                variables: { email: username, password: password },
+            });
+            Auth.login(data.signup.token);
+            onSignUpSuccess({ username });
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     return (

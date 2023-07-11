@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 
@@ -23,13 +26,19 @@ const LoginModal = ({ onClose, onLoginSuccess, onNavigateToSignup }) => {
         config: { tension: 0, friction: 0, }
     });
 
+    const [login, { error, data }] = useMutation(LOGIN_USER);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // call API to login the user
-        // await login({ username, password });
-
-        // If login is successful, handle it in the parent component
-        onLoginSuccess({ username });
+        try {
+            const { data } = await login({
+                variables: { email: username, password: password },
+            });
+            Auth.login(data.login.token);
+            onLoginSuccess({ username });
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     return (

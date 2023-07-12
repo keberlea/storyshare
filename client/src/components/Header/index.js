@@ -30,6 +30,7 @@ const StyledNavLink = styled(NavLink)`
   margin-left: 15px;
   transition: transform .2s;
   box-shadow: 0px 4px 10px 3px rgba(0,0,0,0.75);
+  border-radius: 20px;
   &:hover {
     transform: scale(1.1);
   }
@@ -89,7 +90,7 @@ const Header = ({ activeTab, setActiveTab }) => {
             <nav className="text-black text-4xl flex flex-wrap justify-around">
                 <StyledNavLink
                     to="/home"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/home' ? 'underline' : ''} `}
+                    className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/home' ? 'underline' : ''} `}
                 >
                     Home
 
@@ -98,7 +99,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                     {isLoggedIn ? (
                         <StyledButton
                             onClick={handleLogout}
-                            className="px-4 py-2 m-2 bg-button-pink font-marvel"
+                            className="px-4 py-2 m-2 bg-pink font-marvel"
                         >
                             Logout
                         </StyledButton>
@@ -106,13 +107,13 @@ const Header = ({ activeTab, setActiveTab }) => {
                         <>
                             <StyledButton
                                 onClick={handleNavigateToLogin}
-                                className="px-4 py-2 m-2 bg-button-pink font-marvel"
+                                className="px-4 py-2 m-2 bg-pink font-marvel"
                             >
                                 Login
                             </StyledButton>
                             <StyledButton
                                 onClick={handleNavigateToSignup}
-                                className="px-4 py-2 m-2 bg-button-pink font-marvel"
+                                className="px-4 py-2 m-2 bg-pink font-marvel"
                             >
                                 Sign up
                             </StyledButton>
@@ -121,13 +122,13 @@ const Header = ({ activeTab, setActiveTab }) => {
                 </ButtonContainer>
                 <StyledNavLink
                     to="/prompt"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/prompt' ? 'underline' : ''} `}
+                    className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/prompt' ? 'underline' : ''} `}
                 >
                     Prompts
                 </StyledNavLink>
                 <StyledNavLink
                     to="/stories"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/stories' ? 'underline' : ''} `}
+                    className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/stories' ? 'underline' : ''} `}
                 >
                     Stories
                 </StyledNavLink>

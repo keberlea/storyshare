@@ -69,10 +69,10 @@ const Prompt = () => {
             prompts.map((prompt) => (
               <div
                 key={prompt.id}
-                className="bg-pink font-marvel rounded-lg shadow-md cursor-pointer p-4 hover:bg-yellow transition duration-300"
+                className="bg-pink font-marvel font-bold rounded-lg shadow-md cursor-pointer p-4 hover:bg-yellow transition duration-300"
                 onClick={() => handlePromptSelection(prompt.id)}
               >
-                <p className="text-xl hover:text-black text-black ">
+                <p className="text-4xl hover:text-black text-black ">
                   Prompt: {prompt.description.slice(0, 100)}
                 </p>
               </div>

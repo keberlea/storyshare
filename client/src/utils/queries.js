@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
-        _id
+        id
         username
         stories {
             _id
@@ -19,6 +19,16 @@ export const QUERY_USER = gql`
                 username
                 }
             }
+        }
+    }
+`;
+
+//query prompts
+export const QUERY_PROMPTS = gql`
+    query prompts {
+        prompts {
+            _id
+            promptText
         }
     }
 `;

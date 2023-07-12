@@ -1,38 +1,17 @@
-const { gql } = require('apollo-server-express');
+import { gql } from apollo-server-express;
+import { userTypeDefs } from './users';
+import { storyTypeDefs } from './stories';
+import { promptTypeDefs } from './prompts';
+import { commentTypeDefs } from './comments';
+
+
+
 const typeDefs = gql`
-  type User {
-    id: ID!
-    username: String!
-    firstName: String
-    lastName: String
-    password: String!
-    stories: [Story!]!
-    prompts: [Prompt!]!
-  }
 
-  type Story {
-    id: ID!
-    title: String!
-    content: String!
-    author: User!
-    comments: [Comment!]!
-    createdAt: String!
-    updatedAt: String!
-  }
-
-  type Prompt {
-    id: ID
-    title: String
-    author: User
-    description: String
-  }
-  
-  type Comment {
-    _id: ID!
-    commentText: String!
-    commentAuthor: User!
-    createdAt: String!
-  }
+  ${userTypeDefs}
+  ${storyTypeDefs}
+  ${promptTypeDefs}
+  ${commentTypeDefs}
 
   type Auth {
     token: ID!

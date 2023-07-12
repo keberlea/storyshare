@@ -5,13 +5,13 @@ const storySchema = new Schema({
     storyTitle: {
         type: String,
         minlength: 1,
-        maxlength: 50,
+        maxlength: 200,
         trim: true,
     },
     storyContent: {
         type: String,
         minlength: 1,
-        maxlength: 500,
+        maxlength: 2000 ,
         trim: true,
     },
     storyAuthor: {

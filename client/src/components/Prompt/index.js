@@ -73,34 +73,36 @@ const Prompt = () => {
                 onClick={() => handlePromptSelection(prompt.id)}
               >
                 <p className="text-4xl hover:text-black text-black ">
-                  Prompt: {prompt.description.slice(0, 100)}
+                  Prompt:{prompt.description.slice(0, 100)}
                 </p>
               </div>
             ))
           )}
         </div>
-        {selectedPromptId && (
-          <div className="mt-8">
-            <h2 className="text-3xl font-bold mb-4">Selected Prompt:</h2>
-            <p className="text-xl mb-4">Prompt ID: {selectedPromptId}</p>
-            <form onSubmit={handleStorySubmit}>
-              <label htmlFor="story" className="block text-xl mb-2">
-                Story:
-              </label>
-              <textarea
-                id="story"
-                name="story"
-                className="w-full p-4 border border-gray-300 rounded-lg resize-none"
-                required
-              ></textarea>
-              <ButtonContainer>
-                <StyledButton type="submit">Submit Story</StyledButton>
-              </ButtonContainer>
-            </form>
-          </div>
-        )}
-      </div>
-    </div>
+        {
+          selectedPromptId && (
+            <div className="mt-8">
+              <h2 className="text-3xl font-bold mb-4">Selected Prompt:</h2>
+              <p className="text-xl mb-4">Prompt ID: {selectedPromptId}</p>
+              <form onSubmit={handleStorySubmit}>
+                <label htmlFor="story" className="block text-xl mb-2">
+                  Story:
+                </label>
+                <textarea
+                  id="story"
+                  name="story"
+                  className="w-full p-4 border border-gray-300 rounded-lg resize-none"
+                  required
+                ></textarea>
+                <ButtonContainer>
+                  <StyledButton type="submit">Submit Story</StyledButton>
+                </ButtonContainer>
+              </form>
+            </div>
+          )
+        }
+      </div >
+    </div >
   );
 };
 

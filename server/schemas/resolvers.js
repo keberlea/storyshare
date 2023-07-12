@@ -3,28 +3,33 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Story, Prompt, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
-
+console.log (Prompt);
 const resolvers = {
     
     Query: {
         //all users
+        //works
         users: async () => {
             return User.find();
         },
+
         //user by id
+        //works
         user: async (parent, { userId }) => {
             return User.findOne({_id: userId});
         },
 
         //stories by user User homepage
+        //DW
         storiesByUser:async (_, args,{userId} )=> {
             const user = await User.findById(userId)
             return user.stories
         },
 
         //all prompts home page
+        //DW
         prompts: async () => {
-            return Prompt.find();    
+            return Prompt.find({});    
           },
         
         //prompt by id when selecting prompt
@@ -130,6 +135,7 @@ const resolvers = {
         },
 
         // might need to change from a try catch statement?
+        /*
         updatePrompt: async (parent, { userId, promptId, title, description }) => {
             try{
                 let promptsArray=[];
@@ -149,7 +155,7 @@ const resolvers = {
                 console.log(err)
             }
         },
-
+*/
         // might need to change from a try catch statement?
         updateComment: async (parent, { userId, commentId, content }) => {
             try{
@@ -182,11 +188,7 @@ const resolvers = {
             return updatedUser;
         },
 
-        deletePrompt: async (parent, { userId, promptId }) => {
-            const updatedUser = await User.findByIdAndUpdate(userId,{ $pull : {"prompts" :
-            {_id: promptId}}}, {new: true});
-            return updatedUser;
-        },
+    
     }
 };
 

@@ -99,7 +99,7 @@ const Header = ({ activeTab, setActiveTab }) => {
                     {isLoggedIn ? (
                         <StyledButton
                             onClick={handleLogout}
-                            className="px-4 py-2 m-2 bg-pink font-marvel"
+                            className="px-4 py-2 m-2 bg-pink font-bold font-marvel"
                         >
                             Logout
                         </StyledButton>
@@ -107,31 +107,31 @@ const Header = ({ activeTab, setActiveTab }) => {
                         <>
                             <StyledButton
                                 onClick={handleNavigateToLogin}
-                                className="px-4 py-2 m-2 bg-pink font-marvel"
+                                className="px-4 py-2 m-2 bg-pink font-bold font-marvel"
                             >
                                 Login
                             </StyledButton>
                             <StyledButton
                                 onClick={handleNavigateToSignup}
-                                className="px-4 py-2 m-2 bg-pink font-marvel"
+                                className="px-4 py-2 m-2 bg-pink font-bold font-marvel"
                             >
                                 Sign up
                             </StyledButton>
                         </>
                     )}
                 </ButtonContainer>
-                <StyledNavLink
+                {isLoggedIn && <StyledNavLink
                     to="/prompt"
                     className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/prompt' ? 'underline' : ''} `}
                 >
                     Prompts
-                </StyledNavLink>
-                <StyledNavLink
+                </StyledNavLink>}
+                {isLoggedIn && <StyledNavLink
                     to="/stories"
                     className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/stories' ? 'underline' : ''} `}
                 >
                     Stories
-                </StyledNavLink>
+                </StyledNavLink>}
             </nav>
             {
                 showLogin && (

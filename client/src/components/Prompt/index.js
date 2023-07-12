@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_PROMPTS } from '../../utils/queries';
 import { CREATE_STORY } from '../../utils/mutations';
 import styled from 'styled-components';
+import Auth from '../../utils/auth';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -73,7 +74,7 @@ const Prompt = () => {
                 onClick={() => handlePromptSelection(prompt.id)}
               >
                 <p className="text-4xl hover:text-black text-black ">
-                  Prompt:{prompt.description.slice(0, 100)}
+                  {prompt.description.slice(0, 100)}
                 </p>
               </div>
             ))

@@ -19,16 +19,20 @@ db.once('open', async () => {
         console.log("All seeds have been successfully added to the database!");
 
         for (let i = 0; i < storySeeds.length; i++) {
-          const { _id, storyAuthor } = await Story.create(storySeeds[i]);
-          const user = await User.findOneAndUpdate(
-            { username: storyAuthor },
-            {
+            const { title, content, storyAuthor } = storySeeds[i];
+            const { _id } = await Story.create({ title, content, storyAuthor });
+          
+            const user = await User.findOneAndUpdate(
+              { username: storyAuthor },
+              {
                 $addToSet: {
-                    stories: _id,
+                  stories: _id,
                 },
-            }
-          );
-        }
+              }
+            );
+          
+            console.log(`${storyAuthor}'s story '${title}'and '${content}' has been added to the database!`);
+          }
 
         for (let i = 0; i < commentSeeds.length; i++) {
             const { _id, commentAuthor } = await Comment.create(commentSeeds[i]);
@@ -40,18 +44,24 @@ db.once('open', async () => {
                     },
                 }
             );
+            console.log(
+                `${commentAuthor} has been added to the database!`
+            )
         }
 
         for (let i = 0; i < promptSeeds.length; i++) {
-            const { _id, promptAuthor } = await Prompt.create(promptSeeds[i]);
+            const { _id, description } = await Prompt.create(promptSeeds[i]);
             const users = await User.findOneAndUpdate(
-                { username: promptAuthor },
+                { description: description },
                 {
                     $addToSet: {
                         prompts: _id,
                     },
                 }
             );
+            console.log(
+                `${description} has been added to the database!`
+            )
         }
 
     }   catch (err) {

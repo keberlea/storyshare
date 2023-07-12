@@ -1,16 +1,22 @@
 const db = require('../config/connection');
-const { Comment, Story, User } = require('../models');
+const { Comment, Story, User, Prompt } = require('../models');
 const commentSeeds = require('./commentSeeds.json');
 const storySeeds = require('./storySeeds.json');
 const userSeeds = require('./userSeeds.json');
+const promptSeeds = require('./promptSeeds')
 
 db.once('open', async () => {
     try {
         await Comment.deleteMany({});
         await Story.deleteMany({});
         await User.deleteMany({});
+        await Prompt.deleteMany({});
 
         await User.create(userSeeds);
+        await Story.create(storySeeds);
+        await Comment.create(commentSeeds);
+        await Prompt.create(promptSeeds);
+        console.log("All seeds have been successfully added to the database!");
 
         for (let i = 0; i < storySeeds.length; i++) {
           const { _id, storyAuthor } = await Story.create(storySeeds[i]);
@@ -35,6 +41,19 @@ db.once('open', async () => {
                 }
             );
         }
+
+        for (let i = 0; i < promptSeeds.length; i++) {
+            const { _id, promptAuthor } = await Prompt.create(promptSeeds[i]);
+            const users = await User.findOneAndUpdate(
+                { username: promptAuthor },
+                {
+                    $addToSet: {
+                        prompts: _id,
+                    },
+                }
+            );
+        }
+
     }   catch (err) {
         console.error(err);
         process.exit(1);

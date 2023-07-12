@@ -24,8 +24,8 @@ const resolvers = {
 
         //all prompts home page
         prompts: async () => {
-            return Prompt.find();
-            },
+            return Prompt.find();    
+          },
         
         //prompt by id when selecting prompt
         prompt: async (parent, { promptId }) => {

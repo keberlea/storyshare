@@ -6,17 +6,17 @@ export const QUERY_USER = gql`
         id
         username
         stories {
-            _id
+            id
             title
             prompt
-            storyText
+            content
             createdAt
             username
             comments {
-                _id
+                id
                 commentText
                 createdAt
-                username
+                commentAuthor
                 }
             }
         }
@@ -27,47 +27,47 @@ export const QUERY_USER = gql`
 export const QUERY_PROMPTS = gql`
     query prompts {
         prompts {
-            _id
-            promptText
+            id
+            description
         }
     }
 `;
 
-export const QUERY_STORY = gql`
-    query story($id: ID!) {
-        story(_id: $id) {
-            _id
-            title
-            prompt
-            storyText
-            createdAt
-            username
-            comments {
-                _id
-                commentText
-                createdAt
-                username
-            }
-        }
-    }
-`;
 
 export const QUERY_STORIES = gql`
     query stories {
         stories {
-            _id
+            id
             title
-            prompt
-            storyText
+            content
             createdAt
-            username
+            author {
+                username
+            }
             comments {
                 _id
                 commentText
                 createdAt
-                username
+                commentAuthor {
+                    username
+                }
             }
         }
     }
 `;
+
+export const QUERY_COMMENTS = gql `
+    query comments {
+        comments {
+            id
+            commentText
+            createdAt
+            commentAuthor
+            story {
+                id
+            }
+        }
+    }
+`;
+
 

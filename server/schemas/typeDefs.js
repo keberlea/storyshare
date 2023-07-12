@@ -27,13 +27,13 @@ const typeDefs = gql`
     stories: [Story]
     story(storyId: ID!): Story
     commentsByStory(storyId: ID!): [Comment]
-    comment(commentId: ID!): Comment
+    comment(commentId: ID): Comment
   }
   
   type Mutation {
     createUser(username: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    createStory(userId: ID!, content: String!): Story
+    createStory(userId: ID!, title:String, content: String!): Story
     createPrompt(userId: ID!, title: String!, description: String!): Prompt
     createComment(userId: ID!, content: String!, storyId: ID!): Comment
     updateStory(userId: ID!, storyId: ID!, content: String!): Story

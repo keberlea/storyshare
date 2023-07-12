@@ -3,7 +3,6 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_PROMPTS } from '../../utils/queries';
 import { CREATE_STORY } from '../../utils/mutations';
 import styled from 'styled-components';
-import Auth from '../../utils/auth';
 
 const ButtonContainer = styled.div`
   display: flex;

@@ -1,29 +1,38 @@
 [
     {
+        "id": 0,
         "description": "Write a story about a character who discovers a hidden superpower."
     },
     {
+        "id": 1,
         "description": "Describe a place you have never been to but would love to visit."
     },
     {
+        "id": 2,
         "description": "Write a story about a character who is a villain."
     },
     {
+        "id": 3,
         "description": "Write a story about a character who is a hero."
     },
     {
+        "id": 4,
         "description": "Write a letter to your future self, detailing your hopes, dreams, and aspirations."
     },
     {
+        "id": 5,
         "description": "Describe a vivid childhood memory that still brings a smile to your face."
     },
     {
+        "id": 6,
         "description": "Create a poem that portrays the beauty and tranquility of a peaceful summer evening."
     },
     {
+        "id": 7,
         "description": "Write a short story inspired by the phrase, 'When the stars fell from the sky, everything changed.'"
     },
     {
+        "id": 8,
         "description": "Write a short story inspired by the phrase, 'When the stars fell from the sky, everything changed.'"
     }
 ]

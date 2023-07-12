@@ -34,7 +34,7 @@ const Home = () => {
     }
 
     useEffect(() => {
-        fetchStories();
+        //      fetchStories();
     }, []);
 
     return (

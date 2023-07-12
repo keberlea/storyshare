@@ -55,6 +55,7 @@ const Stories = () => {
             });
             console.log(data);
         } catch (err) {
+            console.log("error")
             console.error(err);
         }
 
@@ -62,7 +63,6 @@ const Stories = () => {
     if (storiesLoading) {
         return <div>Loading...</div>;
     }
-
     return (
         <div className="bg-app-color min-h-screen">
             <h1 className="text-8xl font-lobster text-app-color text-center py-4 bg-black">

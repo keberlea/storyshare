@@ -26,17 +26,17 @@ mutation createUser($username: String!, $password: String!) {
 export const CREATE_STORY = gql`
 mutation createStory($title: String!, $prompt: String!, $storyText: String!) {
     addStory(title: $title, prompt: $prompt, storyText: $storyText) {
-        _id
+        id
         title
         prompt
         storyText
         createdAt
         username
         comments {
-            _id
+            id
             commentText
             createdAt
-            username
+            commentAuthor
         }
     }
 }
@@ -45,13 +45,13 @@ mutation createStory($title: String!, $prompt: String!, $storyText: String!) {
 export const CREATE_COMMENT = gql`
 mutation createComment($storyId: ID!, $commentText: String!) {
     addComment(storyId: $storyId, commentText: $commentText) {
-        _id
+        id
         commentCount
         comments {
             _id
             commentText
             createdAt
-            username
+            commentAuthor
         }
     }
 }
@@ -70,7 +70,7 @@ mutation updateStory($storyId: ID!, $title: String!, $prompt: String!, $storyTex
             _id
             commentText
             createdAt
-            username
+            commentAuthor
         }
     }
 }

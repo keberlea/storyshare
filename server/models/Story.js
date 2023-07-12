@@ -2,19 +2,19 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const storySchema = new Schema({
-    storyTitle: {
+    title: {
         type: String,
         minlength: 1,
         maxlength: 200,
         trim: true,
     },
-    storyContent: {
+    content: {
         type: String,
         minlength: 1,
         maxlength: 2000 ,
         trim: true,
     },
-    storyAuthor: {
+    author: {
         type: String,
         required: true,
         trime: true,

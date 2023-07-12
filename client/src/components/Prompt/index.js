@@ -48,7 +48,7 @@ const Prompt = () => {
                 className="prompt"
                 onClick={() => handlePromptSelection(prompt.id)}
               >
-                <p>Prompt: {prompt.text.slice(0, 100)}</p>
+                <p>Prompt: {prompt.description.slice(0, 100)}</p>
               </section>
             ))}
           </div>

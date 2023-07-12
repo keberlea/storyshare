@@ -27,7 +27,6 @@ export const QUERY_USER = gql`
 export const QUERY_PROMPTS = gql`
     query prompts {
         prompts {
-            id
             description
         }
     }
@@ -45,8 +44,8 @@ export const QUERY_STORIES = gql`
                 username
             }
             comments {
-                _id
-                commentText
+                id
+                content
                 createdAt
                 commentAuthor {
                     username

@@ -58,7 +58,7 @@ const Prompt = () => {
 
   return (
     <div className="bg-app-color min-h-screen">
-      <h1 className="text-8xl text-black text-center py-5 bg-foot-color">
+      <h1 className="text-8xl font-lobster text-app-color text-center py-4 bg-black">
         Prompts
       </h1>
       <div className="container mx-auto py-8 px-4">

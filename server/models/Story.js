@@ -11,7 +11,7 @@ const storySchema = new Schema({
     content: {
         type: String,
         minlength: 1,
-        maxlength: 2000 ,
+        maxlength: 2000,
         trim: true,
     },
     storyAuthor: {

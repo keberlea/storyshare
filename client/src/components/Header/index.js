@@ -5,15 +5,21 @@ import LoginModal from '../LoginModal';
 import SignupModal from '../SignupModal'
 import Auth from '../../utils/auth'
 
-const StyledButton = styled.button`
+const ButtonContainer = styled.div`
   position: absolute;
   top: 20px;
   right: 20px;
+  display: flex;
+  flex-direction: row;
+`;
+
+const StyledButton = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
   transition: transform .2s;
   box-shadow: 0px 4px 10px 3px rgba(0,0,0,0.75);
+  margin: 0 10px;
   &:hover {
     transform: scale(1.1);
   }
@@ -24,6 +30,7 @@ const StyledNavLink = styled(NavLink)`
   margin-left: 15px;
   transition: transform .2s;
   box-shadow: 0px 4px 10px 3px rgba(0,0,0,0.75);
+  border-radius: 20px;
   &:hover {
     transform: scale(1.1);
   }
@@ -60,6 +67,12 @@ const Header = ({ activeTab, setActiveTab }) => {
         setShowSignup(false);
     };
 
+    const handleLogout = () => {
+        Auth.logout();
+        setIsLoggedIn(false);
+        window.location.assign('/');
+    };
+
     useEffect(() => {
         checkLoginStatus();
         const pathname = location.pathname.endsWith('/')
@@ -78,54 +91,68 @@ const Header = ({ activeTab, setActiveTab }) => {
             <nav className="text-black text-4xl flex flex-wrap justify-around">
                 <StyledNavLink
                     to="/home"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/home' ? 'underline' : ''} `}
+                    className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/home' ? 'underline' : ''} `}
                 >
                     Home
+
                 </StyledNavLink>
-                {!isLoggedIn && (
-                    <>
+                <ButtonContainer>
+                    {isLoggedIn ? (
                         <StyledButton
-                            onClick={handleNavigateToLogin}
-                            className="px-4 py-2 m-2 bg-button-pink font-marvel"
+                            onClick={handleLogout}
+                            className="px-4 py-2 m-2 bg-pink font-bold font-marvel"
                         >
-                            Log in
+                            Logout
                         </StyledButton>
-                        <StyledButton
-                            onClick={handleNavigateToSignup}
-                            className="px-4 py-2 m-2 bg-button-pink font-marvel"
-                        >
-                            Sign up
-                        </StyledButton>
-                    </>
-                )}
-                <StyledNavLink
+                    ) : (
+                        <>
+                            <StyledButton
+                                onClick={handleNavigateToLogin}
+                                className="px-4 py-2 m-2 bg-pink font-bold font-marvel"
+                            >
+                                Login
+                            </StyledButton>
+                            <StyledButton
+                                onClick={handleNavigateToSignup}
+                                className="px-4 py-2 m-2 bg-pink font-bold font-marvel"
+                            >
+                                Sign up
+                            </StyledButton>
+                        </>
+                    )}
+                </ButtonContainer>
+                {isLoggedIn && <StyledNavLink
                     to="/prompt"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/prompt' ? 'underline' : ''} `}
+                    className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/prompt' ? 'underline' : ''} `}
                 >
                     Prompts
-                </StyledNavLink>
-                <StyledNavLink
+                </StyledNavLink>}
+                {isLoggedIn && <StyledNavLink
                     to="/stories"
-                    className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/stories' ? 'underline' : ''} `}
+                    className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/stories' ? 'underline' : ''} `}
                 >
                     Stories
-                </StyledNavLink>
+                </StyledNavLink>}
             </nav>
-            {showLogin && (
-                <LoginModal
-                    onClose={() => setShowLogin(false)}
-                    onLoginSuccess={onLoginSuccess}
-                    onNavigateToSignup={handleNavigateToSignup}
-                />
-            )}
-            {showSignup && (
-                <SignupModal
-                    onClose={() => setShowSignup(false)}
-                    onSignUpSuccess={onSignUpSuccess}
-                    onNavigateToLogin={handleNavigateToLogin}
-                />
-            )}
-        </header>
+            {
+                showLogin && (
+                    <LoginModal
+                        onClose={() => setShowLogin(false)}
+                        onLoginSuccess={onLoginSuccess}
+                        onNavigateToSignup={handleNavigateToSignup}
+                    />
+                )
+            }
+            {
+                showSignup && (
+                    <SignupModal
+                        onClose={() => setShowSignup(false)}
+                        onSignUpSuccess={onSignUpSuccess}
+                        onNavigateToLogin={handleNavigateToLogin}
+                    />
+                )
+            }
+        </header >
     );
 
 }

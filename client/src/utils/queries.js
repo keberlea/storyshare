@@ -28,6 +28,7 @@ export const QUERY_PROMPTS = gql`
     query prompts {
         prompts {
             description
+            id
         }
     }
 `;
@@ -55,7 +56,7 @@ export const QUERY_STORIES = gql`
     }
 `;
 
-export const QUERY_COMMENTS = gql `
+export const QUERY_COMMENTS = gql`
     query comments {
         comments {
             id

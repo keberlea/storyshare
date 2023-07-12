@@ -70,6 +70,7 @@ const Header = ({ activeTab, setActiveTab }) => {
     const handleLogout = () => {
         Auth.logout();
         setIsLoggedIn(false);
+        window.location.assign('/');
     };
 
     useEffect(() => {

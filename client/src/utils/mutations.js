@@ -34,12 +34,6 @@ mutation createStory($title: String!, $prompt: String!, $storyText: String!) {
         storyText
         createdAt
         username
-        comments {
-            id
-            commentText
-            createdAt
-            commentAuthor
-        }
     }
 }
 `;
@@ -68,12 +62,6 @@ mutation updateStory($storyId: ID!, $title: String!, $prompt: String!, $storyTex
         storyText
         createdAt
         username
-        comments {
-            _id
-            commentText
-            createdAt
-            commentAuthor
-        }
     }
 }
 `;
@@ -87,12 +75,6 @@ mutation deleteStory($storyId: ID!) {
         storyText
         createdAt
         username
-        comments {
-            _id
-            commentText
-            createdAt
-            username
-        }
     }
 }
 `;

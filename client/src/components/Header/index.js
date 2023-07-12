@@ -5,15 +5,21 @@ import LoginModal from '../LoginModal';
 import SignupModal from '../SignupModal'
 import Auth from '../../utils/auth'
 
-const StyledButton = styled.button`
+const ButtonContainer = styled.div`
   position: absolute;
   top: 20px;
   right: 20px;
+  display: flex;
+  flex-direction: row;
+`;
+
+const StyledButton = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
   transition: transform .2s;
   box-shadow: 0px 4px 10px 3px rgba(0,0,0,0.75);
+  margin: 0 10px;
   &:hover {
     transform: scale(1.1);
   }
@@ -60,6 +66,11 @@ const Header = ({ activeTab, setActiveTab }) => {
         setShowSignup(false);
     };
 
+    const handleLogout = () => {
+        Auth.logout();
+        setIsLoggedIn(false);
+    };
+
     useEffect(() => {
         checkLoginStatus();
         const pathname = location.pathname.endsWith('/')
@@ -81,23 +92,33 @@ const Header = ({ activeTab, setActiveTab }) => {
                     className={`px-4 py-2 m-2 bg-button-yellow text-black font-marvel ${activeTab === '/home' ? 'underline' : ''} `}
                 >
                     Home
+
                 </StyledNavLink>
-                {!isLoggedIn && (
-                    <>
+                <ButtonContainer>
+                    {isLoggedIn ? (
                         <StyledButton
-                            onClick={handleNavigateToLogin}
+                            onClick={handleLogout}
                             className="px-4 py-2 m-2 bg-button-pink font-marvel"
                         >
-                            Log in
+                            Logout
                         </StyledButton>
-                        <StyledButton
-                            onClick={handleNavigateToSignup}
-                            className="px-4 py-2 m-2 bg-button-pink font-marvel"
-                        >
-                            Sign up
-                        </StyledButton>
-                    </>
-                )}
+                    ) : (
+                        <>
+                            <StyledButton
+                                onClick={handleNavigateToLogin}
+                                className="px-4 py-2 m-2 bg-button-pink font-marvel"
+                            >
+                                Login
+                            </StyledButton>
+                            <StyledButton
+                                onClick={handleNavigateToSignup}
+                                className="px-4 py-2 m-2 bg-button-pink font-marvel"
+                            >
+                                Sign up
+                            </StyledButton>
+                        </>
+                    )}
+                </ButtonContainer>
                 <StyledNavLink
                     to="/prompt"
                     className={`px-4 py-2 m-2 bg-button-yellow text-black ${activeTab === '/prompt' ? 'underline' : ''} `}
@@ -111,21 +132,25 @@ const Header = ({ activeTab, setActiveTab }) => {
                     Stories
                 </StyledNavLink>
             </nav>
-            {showLogin && (
-                <LoginModal
-                    onClose={() => setShowLogin(false)}
-                    onLoginSuccess={onLoginSuccess}
-                    onNavigateToSignup={handleNavigateToSignup}
-                />
-            )}
-            {showSignup && (
-                <SignupModal
-                    onClose={() => setShowSignup(false)}
-                    onSignUpSuccess={onSignUpSuccess}
-                    onNavigateToLogin={handleNavigateToLogin}
-                />
-            )}
-        </header>
+            {
+                showLogin && (
+                    <LoginModal
+                        onClose={() => setShowLogin(false)}
+                        onLoginSuccess={onLoginSuccess}
+                        onNavigateToSignup={handleNavigateToSignup}
+                    />
+                )
+            }
+            {
+                showSignup && (
+                    <SignupModal
+                        onClose={() => setShowSignup(false)}
+                        onSignUpSuccess={onSignUpSuccess}
+                        onNavigateToLogin={handleNavigateToLogin}
+                    />
+                )
+            }
+        </header >
     );
 
 }

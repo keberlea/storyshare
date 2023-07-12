@@ -15,12 +15,13 @@ export const LOGIN_USER = gql`
 export const CREATE_USER = gql`
 
 mutation createUser($username: String!, $password: String!) {
-  createUser(username: $username, password: $password)
+  createUser(username: $username, password: $password) {
     user {
       username
       password
     }
   }
+}
 `;
 
 export const CREATE_STORY = gql`

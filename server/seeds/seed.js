@@ -18,6 +18,8 @@ db.once('open', async () => {
         await Prompt.create(promptSeeds);
         console.log("All seeds have been successfully added to the database!");
 
+
+
     }   catch (err) {
         console.error(err);
         process.exit(1);

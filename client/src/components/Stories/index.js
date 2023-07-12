@@ -12,7 +12,7 @@ import { CREATE_STORY } from '../../utils/mutations';
 const Stories = () => {
     const { loading: storiesLoading, data: storiesData } = useQuery(QUERY_STORIES);
     const stories = storiesData?.stories || [];
-    
+
 
     //create mutation for adding new story
     const [createStory] = useMutation(CREATE_STORY);
@@ -35,7 +35,7 @@ const Stories = () => {
         } catch (err) {
             console.error(err);
         }
-        
+
     };
     if (storiesLoading) {
         return <div>Loading...</div>;
@@ -51,39 +51,34 @@ const Stories = () => {
                         <p>{story.content}</p>
                         <p>{story.createdAt}</p>
                         <p>{story.username}</p>
-                        </div>
+                    </div>
                 ))}
-                </div>
-                <div>
-                    <h2>Add Story</h2>
-                    <form onSubmit={handleFormSubmit}>
-                        <div>
-                            <label htmlFor="title">Title:</label>
-                            <input
-                            type="text" 
+            </div>
+            <div>
+                <h2>Add Story</h2>
+                <form onSubmit={handleFormSubmit}>
+                    <div>
+                        <label htmlFor="title">Title:</label>
+                        <input
+                            type="text"
                             id="storyTitle"
                             name="title"
                             placeholder="Title"
-                            />
-                            </div>
-                            <div>
-                                <label htmlFor="content">Story:</label>
-                                <input
-                                type="text"
-                                id="content"
-                                name="content"
-                                placeholder="Story"
-                                />
-                            </div>
-                            <button type="submit">Submit</button>
-                    </form>
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="content">Story:</label>
+                        <input
+                            type="text"
+                            id="content"
+                            name="content"
+                            placeholder="Story"
+                        />
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
             </div>
-        
-        
-
-
         </div>
-
     )
 }
 

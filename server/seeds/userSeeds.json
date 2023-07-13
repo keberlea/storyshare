@@ -1,31 +1,25 @@
 [
     {
-        "_id": "64aee5f57ba7d3b41d91180e",
         "username": "Carlos",
         "password": "password1"
     },
     {
-        "_id": "4aee5f57ba7d3b41d91180f",
         "username": "Brittany",
         "password": "password2"
     },
     {
-        "_id": "64aee5f57ba7d3b41d911810",
         "username": "Melanie",
         "password": "password3"
     },
     {
-        "_id": "64aee5f57ba7d3b41d911811",
         "username": "Santana",
         "password": "password4"
     },
     {
-        "_id": "64aee5f57ba7d3b41d911812",
         "username": "Steven",
         "password": "password5"
     },
     {
-        "_id": "64aee5f57ba7d3b41d911813",
         "username": "Carla",
         "password": "password6"
     }

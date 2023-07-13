@@ -5,8 +5,9 @@ import Auth from '../../utils/auth';
 
 const Profile = () => {
     const currentUser = Auth.getUser();
+    console.log('User:', currentUser);
     const { loading, data, error } = useQuery(QUERY_USER, {
-        variables: { username: currentUser?.data?.username }, // Access the username from currentUser safely
+        variables: { storyAuthor: currentUser.data.username }, // Access the username from currentUser
     });
 
     if (loading) {
@@ -23,22 +24,23 @@ const Profile = () => {
     return (
         <div>
             <h1>Profile</h1>
-            {user && user.stories.length > 0 ? (
-                user.stories.map((story) => (
+
+            {user && user.stories.length > 0 ? (   //If user is truthy and user.stories.length is greater than 0, 
+                user.stories.map((story) => (      // the condition evaluates to true, and the code block will execute
                     <div key={story.id} className="story-container">
-                        <section className="story-title">
-                            <h2>{story.title}</h2>
-                        </section>
-                        <section className="created-on">
-                            <p>Created on: {story.createdAt}</p>
-                        </section>
-                        <section className="prompt">
-                            <p>Prompt: {story.prompt}</p>
-                        </section>
-                        <section className="story-content">
+                        <div
+
+                            className="bg-pink font-marvel font-bold rounded-lg shadow-md cursor-pointer p-4 hover:bg-yellow transition duration-300"
+                        >
+                            <h3 className="text-4xl hover:text-black text-black ">
+                                {story.title}
+                            </h3>
                             <p>{story.content}</p>
-                        </section>
+                            <p>{story.createdAt}</p>
+                        </div>
                     </div>
+
+
                 ))
             ) : (
                 <div>No stories found</div>

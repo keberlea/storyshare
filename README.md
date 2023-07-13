@@ -137,7 +137,7 @@ You can now use Story Share to overcome writer's block, explore inspiring prompt
 #### _ _**Home**_ _
 <br>
 
-![Home Screenshot](/assests/homescreenshot.PNG)
+![Home Screenshot](/assets/homescreenshot.png)
 <br>
 
 #### _ _**Login**_ _

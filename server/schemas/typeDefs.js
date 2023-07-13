@@ -1,17 +1,39 @@
-import { gql } from apollo-server-express;
-import { userTypeDefs } from './users';
-import { storyTypeDefs } from './stories';
-import { promptTypeDefs } from './prompts';
-import { commentTypeDefs } from './comments';
-
-
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
 
-  ${userTypeDefs}
-  ${storyTypeDefs}
-  ${promptTypeDefs}
-  ${commentTypeDefs}
+  type User {
+    _id: ID
+    username: String!
+    firstName: String
+    lastName: String
+    password: String!
+    stories: [Story!]
+    comments: [Comment!]
+  }
+
+  type Story {
+    _id: ID
+    title: String!
+    content: String!
+    storyAuthor: String!
+    createdAt: String
+    updatedAt: String
+    comments: [Comment!]
+  }
+
+  type Comment {
+    _id: ID
+    commentText: String!
+    commentAuthor: User!
+    story: Story!
+  }
+
+  type Prompt {
+    _id: ID
+    description: String!
+  } 
+
 
   type Auth {
     token: ID!
@@ -33,15 +55,14 @@ const typeDefs = gql`
   type Mutation {
     createUser(username: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    createStory(userId: ID!, title:String, content: String!): Story
-    createPrompt(userId: ID!, title: String!, description: String!): Prompt
-    createComment(userId: ID!, content: String!, storyId: ID!): Comment
+    createStory(title: String!, content: String!, storyAuthor: String!): Story
+    createPrompt( description: String!): Prompt
+    createComment(userId: ID!, commentText: String!, storyId: ID!): Comment
     updateStory(userId: ID!, storyId: ID!, content: String!): Story
-    updatePrompt(userId: ID!, promptId: ID!, title: String!, description: String!): Prompt
-    updateComment(userId: ID!, commentId: ID!, content: String!): Comment
+    updatePrompt( description: String!): Prompt
+    updateComment(userId: ID!, commentId: ID!, commentText: String!): Comment
     deleteUser(userId: ID!): User
     deleteStory(userId: ID!, storyId: ID!): Story
-    deletePrompt(userId: ID!, promptId: ID!): Prompt
     deleteComment(userId: ID!, commentId:ID!): Comment
   }
 `;

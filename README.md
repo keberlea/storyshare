@@ -158,6 +158,11 @@ You can now use Story Share to overcome writer's block, explore inspiring prompt
 ![user dashboard](/assests/userDashboardScreenshot.PNG)
 <br>
 
+#### _ _**Prompts Page**_ _ 
+<br>
+
+![create a new post](/assets/promptsScreenshot.PNG)
+<br>
 #### _ _**Create a new story**_ _ 
 <br>
 

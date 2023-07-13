@@ -5,8 +5,9 @@ export const LOGIN_USER = gql`
     login(username: $username, password: $password) {
       token
       user {
-        id
+        _id
         username
+        password
       }
     }
   }
@@ -15,29 +16,23 @@ export const LOGIN_USER = gql`
 export const CREATE_USER = gql`
 
 mutation createUser($username: String!, $password: String!) {
-  createUser(username: $username, password: $password)
-    user {
+  createUser(username: $username, password: $password) {
+    token
+    user{
       username
       password
     }
   }
+}
 `;
 
 export const CREATE_STORY = gql`
-mutation createStory($title: String!, $prompt: String!, $storyText: String!) {
-    addStory(title: $title, prompt: $prompt, storyText: $storyText) {
-        id
+mutation createStory($title: String!, $content: String!, $storyAuthor: String!) {
+  createStory(title: $title, content: $content, storyAuthor: $storyAuthor) {
         title
-        prompt
-        storyText
+        content
         createdAt
-        username
-        comments {
-            id
-            commentText
-            createdAt
-            commentAuthor
-        }
+        storyAuthor
     }
 }
 `;
@@ -66,12 +61,6 @@ mutation updateStory($storyId: ID!, $title: String!, $prompt: String!, $storyTex
         storyText
         createdAt
         username
-        comments {
-            _id
-            commentText
-            createdAt
-            commentAuthor
-        }
     }
 }
 `;
@@ -85,12 +74,6 @@ mutation deleteStory($storyId: ID!) {
         storyText
         createdAt
         username
-        comments {
-            _id
-            commentText
-            createdAt
-            username
-        }
     }
 }
 `;

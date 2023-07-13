@@ -3,7 +3,8 @@ const { Comment, Story, User, Prompt } = require('../models');
 const commentSeeds = require('./commentSeeds.json');
 const storySeeds = require('./storySeeds.json');
 const userSeeds = require('./userSeeds.json');
-const promptSeeds = require('./promptSeeds')
+const promptSeeds = require('./promptSeeds');
+const { Types } = require('mongoose');
 
 db.once('open', async () => {
     try {
@@ -13,47 +14,15 @@ db.once('open', async () => {
         await Prompt.deleteMany({});
 
         await User.create(userSeeds);
+        console.log(`${userSeeds.length} users seeded`);
         await Story.create(storySeeds);
+        console.log( `${storySeeds.length} stories seeded`)
         await Comment.create(commentSeeds);
+        console.log(`${commentSeeds.length} comments seeded`)
         await Prompt.create(promptSeeds);
+        console.log(`${promptSeeds.length} prompts seeded`)
+    
         console.log("All seeds have been successfully added to the database!");
-
-        for (let i = 0; i < storySeeds.length; i++) {
-          const { _id, storyAuthor } = await Story.create(storySeeds[i]);
-          const user = await User.findOneAndUpdate(
-            { username: storyAuthor },
-            {
-                $addToSet: {
-                    stories: _id,
-                },
-            }
-          );
-        }
-
-        for (let i = 0; i < commentSeeds.length; i++) {
-            const { _id, commentAuthor } = await Comment.create(commentSeeds[i]);
-            const users = await User.findOneAndUpdate(
-                { username: commentAuthor },
-                {
-                    $addToSet: {
-                        comments: _id,
-                    },
-                }
-            );
-        }
-
-        for (let i = 0; i < promptSeeds.length; i++) {
-            const { _id, promptAuthor } = await Prompt.create(promptSeeds[i]);
-            const users = await User.findOneAndUpdate(
-                { username: promptAuthor },
-                {
-                    $addToSet: {
-                        prompts: _id,
-                    },
-                }
-            );
-        }
-
     }   catch (err) {
         console.error(err);
         process.exit(1);

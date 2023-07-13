@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const storySchema = new Schema({
@@ -11,13 +11,13 @@ const storySchema = new Schema({
     content: {
         type: String,
         minlength: 1,
-        maxlength: 2000 ,
+        maxlength: 2000,
         trim: true,
     },
-    author: {
+    storyAuthor: {
         type: String,
-        required: true,
-        trime: true,
+        ref: 'User',
+        trim: true,
     },
     createdAt: {
         type: Date,

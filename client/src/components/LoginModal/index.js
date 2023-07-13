@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 import { useMutation } from '@apollo/client';
@@ -81,7 +80,7 @@ const LoginModal = ({ onClose, onLoginSuccess, onNavigateToSignup }) => {
                     </div>
                 )}
                 <p className="mt-4 text-lg">Don't have an account? <span className="text-app-color hover:underline cursor-pointer" onClick={onNavigateToSignup}>
-                    Login to StoryShare
+                    Signup for StoryShare
                 </span>
                 </p>
                 <button type="button" className="mt-5 inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-app-color text-xl font-medium text-inside hover:bg-button-yellow hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-button-yellow sm:text-lg" onClick={onClose}>Close</button>

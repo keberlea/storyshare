@@ -16,7 +16,7 @@ const storySchema = new Schema({
     },
     storyAuthor: {
         type: String,
-        ref:'User',
+        ref: 'User',
         trim: true,
     },
     createdAt: {

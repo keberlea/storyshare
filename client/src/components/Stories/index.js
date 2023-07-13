@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_STORIES} from '../../utils/queries';
+import { QUERY_STORIES } from '../../utils/queries';
 import { CREATE_STORY } from '../../utils/mutations';
 import styled from 'styled-components';
 //when on the /stories page we want to load all the stories in the database
@@ -35,18 +35,15 @@ const Stories = () => {
     const { loading: storiesLoading, data: storiesData } = useQuery(QUERY_STORIES);
     const stories = storiesData?.stories || [];
 
-
     //create mutation for adding new story
     const [createStory] = useMutation(CREATE_STORY);
 
-    //create function to handle form submit
+    // Initialize state for form fields
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
-        const form = event.target;
-        const formData = new FormData(form);
-        const title = formData.get('title');
-        const content = formData.get('content');
 
         try {
             const { data } = await createStory({
@@ -54,15 +51,19 @@ const Stories = () => {
                 refetchQueries: [{ query: QUERY_STORIES }],
             });
             console.log('Story created:', data.createStory);
+
+            // Reset form fields
+            setTitle("");
+            setContent("");
         } catch (err) {
-            console.log("error")
             console.error(err);
         }
-
     };
+
     if (storiesLoading) {
         return <div>Loading...</div>;
-    }
+    };
+
     return (
         <div className="bg-app-color min-h-screen">
             <h1 className="text-8xl font-lobster text-app-color text-center py-4 bg-black">
@@ -93,6 +94,8 @@ const Stories = () => {
                             type="text"
                             id="storyTitle"
                             name="title"
+                            value={title}  // set the value to the title state
+                            onChange={(e) => setTitle(e.target.value)} // update state when input changes
                             placeholder="Title"
                             className="w-full p-4 border border-gray-300 rounded-lg"
                             required
@@ -103,6 +106,8 @@ const Stories = () => {
                         <textarea
                             id="content"
                             name="content"
+                            value={content} // set the value to the content state
+                            onChange={(e) => setContent(e.target.value)} // update state when input changes
                             placeholder="Story"
                             className="w-full p-4 border border-gray-300 rounded-lg resize-none"
                             required
@@ -115,8 +120,6 @@ const Stories = () => {
             </div>
         </div>
     );
-};
-
-
+}
 
 export default Stories;

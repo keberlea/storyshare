@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_STORIES } from '../../utils/queries';
 import { CREATE_STORY } from '../../utils/mutations';
 import styled from 'styled-components';
+import Auth from '../../utils/auth'
 //when on the /stories page we want to load all the stories in the database
 // we want to be able to display each story with it's title, username (as author) , createdAt, the content
 // when we click on the story, we want to be able to see the same information plus the story comments
@@ -43,12 +44,15 @@ const Stories = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         try {
+            const currentUser = Auth.getUser();
+            console.log(currentUser)
             const { data } = await createStory({
-                variables: { title, content },
+                variables: { title, content, storyAuthor: currentUser.data.username },
                 refetchQueries: [{ query: QUERY_STORIES }],
             });
             console.log('Story created:', data.createStory);
@@ -60,6 +64,9 @@ const Stories = () => {
             console.error(err);
         }
     };
+
+
+
 
     if (storiesLoading) {
         return <div>Loading...</div>;

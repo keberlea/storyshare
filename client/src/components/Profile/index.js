@@ -6,7 +6,7 @@ import Auth from '../../utils/auth';
 
 const Profile = () => {
     const currentUser = Auth.getUser(); // Retrieves current user's info from auth
-    const { loading, data, error } = useQuery(QUERY_USER, {
+    const { loading, data, error } = useQuery(QUERY_USER, QUERY_STORIES, {
         variables: { username: currentUser.username },
 
     });

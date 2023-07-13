@@ -27,11 +27,12 @@ mutation createUser($username: String!, $password: String!) {
 `;
 
 export const CREATE_STORY = gql`
-mutation createStory($title: String!, $content: String!) {
-    createStory(title: $title, content: $content) {
+mutation createStory($title: String!, $content: String!, $storyAuthor: String!) {
+  createStory(title: $title, content: $content, storyAuthor: $storyAuthor) {
         title
         content
         createdAt
+        storyAuthor
     }
 }
 `;

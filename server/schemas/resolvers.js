@@ -97,7 +97,7 @@ const resolvers = {
             }
         },
 
-        createStory: async (parent, { title, content }) => {
+        createStory: async (parent, { title, content, storyAuthor }) => {
             if (!title) {
                 throw new Error('Title is required');
             }
@@ -106,7 +106,11 @@ const resolvers = {
                 throw new Error('Content is required');
             }
 
-            const newStory = await Story.create({ title, content });
+            if (!storyAuthor) {
+                throw new Error('Story author is required');
+            }
+
+            const newStory = await Story.create({ title, content, storyAuthor });
             return newStory;
         },
 

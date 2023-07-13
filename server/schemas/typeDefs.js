@@ -14,9 +14,9 @@ const typeDefs = gql`
 
   type Story {
     _id: ID
-    title: String
-    content: String
-    storyAuthor: String
+    title: String!
+    content: String!
+    storyAuthor: String!
     createdAt: String
     updatedAt: String
     comments: [Comment!]
@@ -55,7 +55,7 @@ const typeDefs = gql`
   type Mutation {
     createUser(username: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    createStory( title:String!, content: String!): Story
+    createStory(title: String!, content: String!, storyAuthor: String!): Story
     createPrompt( description: String!): Prompt
     createComment(userId: ID!, commentText: String!, storyId: ID!): Comment
     updateStory(userId: ID!, storyId: ID!, content: String!): Story

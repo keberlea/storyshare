@@ -5,8 +5,9 @@ export const LOGIN_USER = gql`
     login(username: $username, password: $password) {
       token
       user {
-        id
+        _id
         username
+        password
       }
     }
   }
@@ -26,14 +27,11 @@ mutation createUser($username: String!, $password: String!) {
 `;
 
 export const CREATE_STORY = gql`
-mutation createStory($title: String!, $prompt: String!, $storyText: String!) {
-    addStory(title: $title, prompt: $prompt, storyText: $storyText) {
-        id
+mutation createStory($title: String!, $content: String!) {
+    createStory(title: $title, content: $content) {
         title
-        prompt
-        storyText
+        content
         createdAt
-        username
     }
 }
 `;

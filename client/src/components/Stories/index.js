@@ -1,10 +1,10 @@
 import React from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_STORIES, QUERY_PROMPTS } from '../../utils/queries';
+import { QUERY_STORIES} from '../../utils/queries';
 import { CREATE_STORY } from '../../utils/mutations';
 import styled from 'styled-components';
 //when on the /stories page we want to load all the stories in the database
-// we want to be able to display each story with it's title, username (as author) , createdAt, the prompt and the storyText
+// we want to be able to display each story with it's title, username (as author) , createdAt, the content
 // when we click on the story, we want to be able to see the same information plus the story comments
 // we want to be able to add a comment to the story
 
@@ -38,22 +38,22 @@ const Stories = () => {
 
     //create mutation for adding new story
     const [createStory] = useMutation(CREATE_STORY);
+
     //create function to handle form submit
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        const form = event.currentTarget;
+        const form = event.target;
         const formData = new FormData(form);
-        const title = formData.get('storyTitle');
-        //const prompt = formData.get('prompt');
-        const content = formData.get('storyText');
+        const title = formData.get('title');
+        const content = formData.get('content');
 
         try {
             const { data } = await createStory({
-                variables: { title, prompt, content },
+                variables: { title, content },
                 refetchQueries: [{ query: QUERY_STORIES }],
             });
-            console.log(data);
+            console.log('Story created:', data.createStory);
         } catch (err) {
             console.log("error")
             console.error(err);
@@ -72,7 +72,7 @@ const Stories = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {stories.map((story) => (
                         <div
-                            key={story.id}
+                            //key={story.id}
                             className="bg-pink font-marvel font-bold rounded-lg shadow-md cursor-pointer p-4 hover:bg-yellow transition duration-300"
                         >
                             <h3 className="text-4xl hover:text-black text-black ">
@@ -80,7 +80,6 @@ const Stories = () => {
                             </h3>
                             <p>{story.content}</p>
                             <p>{story.createdAt}</p>
-                            <p>{story.username}</p>
                         </div>
                     ))}
                 </div>

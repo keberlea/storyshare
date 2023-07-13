@@ -95,10 +95,17 @@ const resolvers = {
             }
         },
        
-        createStory: async (parent, { userId, content }) => {
-            const updatedUser = await User.findByIdAndUpdate(userId,{ $push : {"stories" :
-            {content: content}}}, {new: true});
-            return updatedUser;
+        createStory: async (parent, { title, content }) => {
+            if (!title) {
+                throw new Error('Title is required');
+              }
+              
+            if (!content) {
+                throw new Error('Content is required');
+              }
+            
+            const newStory = await Story.create({title, content}, {new: true});
+            return newStory;
         },
 
         createPrompt: async (parent, args, context, info ) =>{
@@ -134,28 +141,6 @@ const resolvers = {
             }
         },
 
-        // might need to change from a try catch statement?
-        /*
-        updatePrompt: async (parent, { userId, promptId, title, description }) => {
-            try{
-                let promptsArray=[];
-                let updatedUser;
-                updatedUser = await Prompt.findById(userId);
-                promptsArray = updatedUser.prompts;
-                promptsArray.forEach((prompt)=>{
-                    if(prompt._id === promptId){
-                        prompt.title = title;
-                        prompt.description = description;
-                    }
-                })
-                console.log("updatedPrompts",promptsArray)
-                updatedUser.save();
-                return updatedUser;
-            }catch(err){
-                console.log(err)
-            }
-        },
-*/
         // might need to change from a try catch statement?
         updateComment: async (parent, { userId, commentId, content }) => {
             try{

@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
 
   type User {
-    id: ID
+    _id: ID
     username: String!
     firstName: String
     lastName: String
@@ -13,24 +13,24 @@ const typeDefs = gql`
   }
 
   type Story {
-    id: ID
-    title: String!
+    _id: ID
+    title: String
     content: String!
-    author: User!
+    storyAuthor: String
     createdAt: String
     updatedAt: String
-    comments: [Comment!]!
+    comments: [Comment!]
   }
 
   type Comment {
-    id: ID
-    content: String!
-    user: User!
+    _id: ID
+    commentText: String!
+    commentAuthor: User!
     story: Story!
   }
 
   type Prompt {
-    id: ID
+    _id: ID
     description: String!
   } 
 
@@ -55,12 +55,12 @@ const typeDefs = gql`
   type Mutation {
     createUser(username: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    createStory(userId: ID!, title:String, content: String!): Story
+    createStory( title:String, content: String!): Story
     createPrompt( description: String!): Prompt
-    createComment(userId: ID!, content: String!, storyId: ID!): Comment
+    createComment(userId: ID!, commentText: String!, storyId: ID!): Comment
     updateStory(userId: ID!, storyId: ID!, content: String!): Story
     updatePrompt( description: String!): Prompt
-    updateComment(userId: ID!, commentId: ID!, content: String!): Comment
+    updateComment(userId: ID!, commentId: ID!, commentText: String!): Comment
     deleteUser(userId: ID!): User
     deleteStory(userId: ID!, storyId: ID!): Story
     deleteComment(userId: ID!, commentId:ID!): Comment

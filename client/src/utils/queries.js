@@ -3,17 +3,17 @@ import { gql } from '@apollo/client';
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
-        id
+        _id
         username
         stories {
-            id
             title
             prompt
             content
             createdAt
-            username
+            storyAuthor {
+                username
+            }
             comments {
-                id
                 commentText
                 createdAt
                 commentAuthor
@@ -28,7 +28,6 @@ export const QUERY_PROMPTS = gql`
     query prompts {
         prompts {
             description
-            id
         }
     }
 `;
@@ -37,20 +36,12 @@ export const QUERY_PROMPTS = gql`
 export const QUERY_STORIES = gql`
     query stories {
         stories {
-            id
             title
             content
             createdAt
-            author {
-                username
-            }
+            storyAuthor
             comments {
-                id
-                content
-                createdAt
-                commentAuthor {
-                    username
-                }
+                commentText
             }
         }
     }
@@ -59,7 +50,6 @@ export const QUERY_STORIES = gql`
 export const QUERY_COMMENTS = gql`
     query comments {
         comments {
-            id
             commentText
             createdAt
             commentAuthor

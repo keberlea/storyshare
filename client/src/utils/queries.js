@@ -6,7 +6,6 @@ export const QUERY_USER = gql`
         _id
         username
         stories {
-            _id
             title
             prompt
             content

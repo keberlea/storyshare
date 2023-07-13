@@ -58,7 +58,7 @@ function App() {
           <Header activeTab={activeTab} setActiveTab={setActiveTab} />
           <Routes>
             <Route path="/home" element={<Home />} />
-            <Route path="/profile/:userId" element={<Profile />} />  {/* Profile component can access this id using the useParams hook */}
+            <Route path="/profile" element={<Profile />} />  {/* Profile component can access this id using the useParams hook */}
             <Route path="/prompt" element={<Prompt />} />
             <Route path="/stories" element={<Stories />} />
             <Route path="/stories/:id" element={<Story />} />  {/* Story component can access this id using the useParams hook */}

@@ -121,18 +121,34 @@ const Header = ({ activeTab, setActiveTab }) => {
                         </>
                     )}
                 </ButtonContainer>
-                {isLoggedIn && <StyledNavLink
-                    to="/prompt"
-                    className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/prompt' ? 'underline' : ''} `}
-                >
-                    Prompts
-                </StyledNavLink>}
-                {isLoggedIn && <StyledNavLink
-                    to="/stories"
-                    className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/stories' ? 'underline' : ''} `}
-                >
-                    Stories
-                </StyledNavLink>}
+                {isLoggedIn &&
+
+                    <StyledNavLink
+
+                        to="/profile"
+                        className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/profile' ? 'underline' : ''} `}
+                    >
+                        Profile
+
+                    </StyledNavLink>}
+                {isLoggedIn &&
+
+                    <StyledNavLink
+
+                        to="/prompt"
+                        className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/prompt' ? 'underline' : ''} `}
+                    >
+                        Prompts
+
+                    </StyledNavLink>}
+                {isLoggedIn
+
+                    && <StyledNavLink
+                        to="/stories"
+                        className={`px-4 py-2 m-2 bg-yellow text-black ${activeTab === '/stories' ? 'underline' : ''} `}
+                    >
+                        Stories
+                    </StyledNavLink>}
             </nav>
             {
                 showLogin && (

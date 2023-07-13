@@ -12,6 +12,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledButton = styled.button`
@@ -113,7 +114,8 @@ const Stories = () => {
                             required
                         ></textarea>
                         <ButtonContainer>
-                            <StyledButton type="submit">Submit Story</StyledButton>
+                            <StyledButton className='font-marvel text-xl'
+                                type="submit">Submit Story</StyledButton>
                         </ButtonContainer>
                     </form>
                 </div>

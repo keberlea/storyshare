@@ -62,7 +62,7 @@ const typeDefs = gql`
     updatePrompt( description: String!): Prompt
     updateComment(userId: ID!, commentId: ID!, commentText: String!): Comment
     deleteUser(userId: ID!): User
-    deleteStory(userId: ID!, storyId: ID!): Story
+    deleteStory(storyId: ID!): Story
     deleteComment(userId: ID!, commentId:ID!): Comment
   }
 `;

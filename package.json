@@ -17,6 +17,7 @@
         "nodemon": "^3.0.1"
     },
     "dependencies": {
+        "dotenv": "^16.3.1",
         "graphql": "^16.7.1",
         "jsonwebtoken": "^9.0.1",
         "jwt-decode": "^3.1.2",

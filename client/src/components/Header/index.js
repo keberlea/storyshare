@@ -11,6 +11,7 @@ const ButtonContainer = styled.div`
   right: 20px;
   display: flex;
   flex-direction: row;
+  font-size: 25px;
 `;
 
 const StyledButton = styled.button`

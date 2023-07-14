@@ -152,10 +152,11 @@ You can now use Story Share to overcome writer's block, explore inspiring prompt
 ![SignUp Screenshot](/assets/signupScreenshot.png)
 <br>
 
-#### _ _**Dashboard**_ _ 
+#### _ _**User Profile**_ _ 
 <br>
 
-![user dashboard](/assests/userDashboardScreenshot.PNG)
+Coming soon!
+![user dashboard](/assests/userProfileScreenshot.PNG)
 <br>
 
 #### _ _**Create a new story**_ _ 
@@ -167,25 +168,29 @@ You can now use Story Share to overcome writer's block, explore inspiring prompt
 #### _ _**Update/Delete a story**_ _ 
 <br>
 
-![Update/delete post](/assests/singleStoryvandUpdateandDelete.PNG)
+Coming soon!
+![Update/delete story](/assests/singleStoryvandUpdateandDelete.PNG)
 <br>
 
 #### _ _**Create a new prompt**_ _ 
 <br>
 
-![create a new post](/assests/createPromptScreenshot.PNG)
+Coming soon!
+![create a new prompt](/assests/createPromptScreenshot.PNG)
 <br>
 
 #### _ _**Update/Delete a prompt**_ _ 
 <br>
 
-![Update/delete post](/assests/singlePromptvandUpdateandDelete.PNG)
+Coming soon!
+![Update/delete prompt](/assests/singlePromptvandUpdateandDelete.PNG)
 <br>
 
 #### _ _**Comment on a story**_ _ 
 <br>
 
-![Comment on a post](public/assests/SingleStoryComment.PNG)
+Coming soon!
+![Comment on a story](public/assests/SingleStoryComment.PNG)
 <br>
 
 ## Contributing 

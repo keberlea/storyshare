@@ -181,14 +181,14 @@ const resolvers = {
             return userToRemove;
         },
 
-        deleteStory: async (parent, { userId, storyId }) => {
-            const updatedUser = await User.findByIdAndUpdate(userId, {
+        deleteStory: async (parent, { storyId }) => {
+            const updatedStories = await Story.findByIdAndUpdate(storyId, {
                 $pull: {
                     "stories":
                         { _id: storyId }
                 }
             }, { new: true });
-            return updatedUser;
+            return updatedStories;
         },
 
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_STORIES } from '../../utils/queries';
-import { CREATE_STORY } from '../../utils/mutations';
+import { CREATE_STORY, DELETE_STORY } from '../../utils/mutations';
 import styled from 'styled-components';
 import Auth from '../../utils/auth'
 //when on the /stories page we want to load all the stories in the database
@@ -31,6 +31,22 @@ const StyledButton = styled.button`
     transform: scale(1.1);
   }
 `
+const StyledButton2 = styled.button`
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: #FEE857;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.75);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`
 
 const Stories = () => {
     const { loading: storiesLoading, data: storiesData } = useQuery(QUERY_STORIES);
@@ -38,6 +54,8 @@ const Stories = () => {
 
     //create mutation for adding new story
     const [createStory] = useMutation(CREATE_STORY);
+    //create mutation for delete story
+    const [deleteStory] = useMutation(DELETE_STORY);
 
     // Initialize state for form fields
     const [title, setTitle] = useState("");
@@ -64,6 +82,18 @@ const Stories = () => {
         }
     };
 
+    //handle delete
+    const handleDelete = async (storyId) => {
+        try {
+          const { data } = await deleteStory({
+            variables: { storyId },
+            refetchQueries: [{ query: QUERY_STORIES }],
+          });
+          console.log('Story deleted:', data.deleteStory);
+        } catch (err) {
+          console.error(err);
+        }
+      };
 
 
 
@@ -80,7 +110,7 @@ const Stories = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {stories.map((story) => (
                         <div
-                            //key={story.id}
+                            key={story.id}
                             className="bg-pink font-marvel font-bold rounded-lg shadow-md cursor-pointer p-4 hover:bg-yellow transition duration-300"
                         >
                             <h3 className="text-4xl hover:text-black text-black ">
@@ -88,6 +118,9 @@ const Stories = () => {
                             </h3>
                             <p>{story.content}</p>
                             <p>{story.createdAt}</p>
+                            <ButtonContainer>
+                            <StyledButton2 onClick={() => handleDelete(story.id)}>Delete</StyledButton2>
+                            </ButtonContainer>
                         </div>
                     ))}
                 </div>

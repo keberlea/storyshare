@@ -53,29 +53,27 @@ mutation createComment($storyId: ID!, $commentText: String!) {
 `;
 
 export const UPDATE_STORY = gql`
-mutation updateStory($storyId: ID!, $title: String!, $prompt: String!, $storyText: String!) {
-    updateStory(storyId: $storyId, title: $title, prompt: $prompt, storyText: $storyText) {
-        _id
+mutation updateStory( $title: String!, $content: String!) {
+    updateStory(title: $title, storyText: $storyText) {
         title
-        prompt
-        storyText
+        content
         createdAt
         username
     }
 }
 `;
 
+
 export const DELETE_STORY = gql`
-mutation deleteStory($storyId: ID!) {
-    deleteStory(storyId: $storyId) {
-        _id
-        title
-        prompt
-        storyText
-        createdAt
-        username
+  mutation deleteStory($id: ID!) {
+    deleteStory(id: $id) {
+      _id
+      title
+      content
+      createdAt
+      storyAuthor
     }
-}
+  }
 `;
 
 

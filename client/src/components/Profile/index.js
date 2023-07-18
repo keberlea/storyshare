@@ -6,9 +6,11 @@ import Auth from '../../utils/auth';
 const Profile = () => {
     const currentUser = Auth.getUser();
     console.log('User:', currentUser);
+    console.log('Username:', currentUser?.data?.username);
     const { loading, data, error } = useQuery(QUERY_USER, {
         variables: { storyAuthor: currentUser.data.username }, // Access the username from currentUser
     });
+   
 
     if (loading) {
         return <div>Loading...</div>;
@@ -20,6 +22,7 @@ const Profile = () => {
     }
 
     const user = data?.user;
+    
 
     return (
         <div>

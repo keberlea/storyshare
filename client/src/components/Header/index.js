@@ -15,16 +15,24 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-  padding: 10px 20px;
+  padding: 5px 10px; // Decreased padding
+  font-size: 18px; // Decreased font size
   border: none;
-  border-radius: 20px;
+  border-radius: 15px; // Decreased border-radius
   transition: transform .2s;
   box-shadow: 0px 4px 10px 3px rgba(0,0,0,0.75);
-  margin: 0 10px;
+  margin: 0 5px; // Decreased margin
   &:hover {
     transform: scale(1.1);
   }
+  
+  // Media query for smaller screens (e.g., less than 768px)
+  @media (max-width: 767px) {
+    font-size: 14px; // Even smaller font size for smaller screens
+    padding: 2px 5px; // Even smaller padding for smaller screens
+  }
 `;
+
 
 const StyledNavLink = styled(NavLink)`
   margin-right: 15px;

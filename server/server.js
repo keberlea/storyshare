@@ -3,6 +3,8 @@ const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 //might need to reuire "token"
 const { authMiddleware } = require('./utils/auth');
+require('dotenv').config();
+
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -14,7 +16,6 @@ const server = new ApolloServer({
     resolvers,
     context: authMiddleware,
 });
-
 //const token = signToken({ _id: 'user_id', username: 'username' });
 
 app.use(express.urlencoded({ extended: false }));
